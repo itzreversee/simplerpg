@@ -3,17 +3,28 @@ from assets.items import *
 
 class player():
     name = "Maciek"
-    location = "overworldtest"
+    location = "village"
 
     hp = 100
     maxhp = 100
+    basemaxhp = 100
+    basehpregen = 1
     hpregen = 1
 
     mana = 225
     maxmana = 225
     manaregen = 8
+    basemana = 200
+    basemanaregen = 3
 
     inventory = [FireSpell, CurseSpell, HealSpell]
+    items = [manaBag]
+    
+    gold = 250
+    exp = 75
+    level = 1
+    nextlevel = 100
+
     isEnemy = False
     curseLeft = 0
     curseId = 6
