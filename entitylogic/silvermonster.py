@@ -33,6 +33,6 @@ def enemyRound(player, me):
             break
         x = random.randint(0,9)
         if (x) == 6: return(me, player, 2)
-        if (x.even()): return(me, player, 0); break
-        if (x.odd()): return(me, player, 1); break
+        if (x % 2 == 0): return(me, player, 0); break
+        else: return(me, player, 1); break
     
