@@ -1,7 +1,6 @@
 
 from lib.libbattle import *
-from lib.libplayer import *
-from lib.libinventory import *
+from lib.libentity import *
 from lib.randomthings import *
 import time
 
