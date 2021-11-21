@@ -30,7 +30,7 @@ def battle(p, e):
 
         while True: #menu loop
             clearConsole()
-            drawBasicMenu(p, e, rounds)
+            drawBasicBattleMenu(p, e, rounds)
             if (cmenu) == 'battle':
                 drawBattleMenu()
                 (menuinput) = getUserInput()
