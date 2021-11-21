@@ -7,13 +7,14 @@
   <image src="https://img.shields.io/badge/version-1.4a-ff69b4?style=flat-plastic"/>
  </p>
 
-simplerpg, python terminal game made from scratch.  
-To launch battle with 'Silver Monster' type ```python3 battletest.py```  
+world test with village.
+To launch village test type ```python3 villagetest.py```  
   
 To edit things:
-* ```lib/libentity.py``` <- Player and Monster Stats, and Spells
-* ```lib/libmagic.py``` <- Spells stats.
-* ```entitylogic/silvermonster.py``` <- Silver Monster logic
+* 
+* 
+* 
   
 ### Warning!
 * Only tested on Arch Linux, please create an issue if not wokring on windows!
+* You shouldn't use this branch, it is only meant for testing. You have been warned.
