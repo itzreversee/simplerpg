@@ -1,6 +1,4 @@
 
-import sys
-
 class FireSpell(): 
     hardid = "FireSpell"
     id = 2

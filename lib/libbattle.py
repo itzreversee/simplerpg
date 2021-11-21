@@ -1,10 +1,8 @@
 from lib.libdraw import *
 from lib.libmagic import *
 from lib.randomthings import *
-from lib.librps import getUserInput, getCPUinput
+from lib.libinput import getUserInput
 from enemylogic.silvermonster import entityLogic, enemyRound
-
-import random
 
 global isBattleGoing
 global battletype
