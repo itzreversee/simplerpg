@@ -10,11 +10,7 @@
 ##### village test is now live in branch ```villagetest```! (currently broken)
 simplerpg, python terminal game made from scratch. 
 To launch battle with 'Silver Monster' type ```python3 battletest.py```  
-  
-To edit things:
-* ```lib/libentity.py``` <- Player and Monster Stats, and Spells
-* ```lib/libmagic.py``` <- Spells stats.
-* ```entitylogic/silvermonster.py``` <- Silver Monster logic
-  
+To Mod stuff, check wiki for file and libraries documentation.  
+
 ### Warning!
 * Only tested on Arch Linux, please create an issue if not wokring on windows!
