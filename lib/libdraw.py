@@ -1,5 +1,4 @@
 
-from lib.librps import getUserInput
 from lib.libmagic import *
 
 from lib.randomthings import notimplemented
