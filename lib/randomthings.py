@@ -1,8 +1,9 @@
 import time
 import os
 
-def notimplemented():
-    print("not implemented")
+def notImplemented(f = ''):
+    if (f) == '': print("not implemented")
+    else: print(f + ' is not implemented')
     time.sleep(1)
 
     return()
