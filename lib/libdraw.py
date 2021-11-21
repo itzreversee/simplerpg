@@ -3,15 +3,15 @@ from lib.libmagic import *
 
 from lib.randomthings import notimplemented
 
-def drawBasicMenu(player, enemy): 
+def drawBasicMenu(player, enemy, rounds): 
     print('\n')
-    print("| " + player.name + " | vs | " + enemy.name + " (" + str(enemy.hp) + " HP) |")
+    print("| " + player.name + " | vs | " + enemy.name + " (" + str(enemy.hp) + " HP) | ROUND " + str(rounds))
     bar(player.hp, player.maxhp, ' HP   |', '| REGEN - ' + str(player.hpregen) ); print("")
     bar(player.mana, player.maxmana, ' MANA |', '| REGEN - ' + str(player.manaregen) ); print("")
 
 def drawBattleMenu():
     print("\nWhat to do?")
-    print(" q - battle ( not implemented )")
+    print(" q - flee ")
     print(" w - spells")
     print(" e - skip round")
     
@@ -41,3 +41,11 @@ def bar(iteration, total, prefix = ' |', suffix = '| ', ):
     filledLength = int(length * iteration // total)
     bar = fill * filledLength + '-' * (length - filledLength)
     print(f'\r{prefix} |{bar}| {percent}% ({iteration}) {suffix}', end = printEnd)
+
+def drawWorld(map): # DO NOT USE
+    lines = map.readlines()
+    for lines in lines:
+        print(lines)
+
+def drawWorldMenu(player):
+    print('a')
