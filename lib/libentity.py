@@ -1,7 +1,9 @@
 from lib.libmagic import * 
+from assets.items import *
 
 class player():
     name = "Maciek"
+    location = "overworldtest"
 
     hp = 100
     maxhp = 100
@@ -15,6 +17,7 @@ class player():
     isEnemy = False
     curseLeft = 0
     curseId = 6
+
 
 class silvermonster():
     name = "Silver Monster"
@@ -32,4 +35,3 @@ class silvermonster():
     isEnemy = True
     curseLeft = 0
     curseId = 6
-
