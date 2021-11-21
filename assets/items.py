@@ -1,10 +1,21 @@
-class WoodenShield():
-    inGameName = 'Wooden Shield'
-    hardid = 'WoodenShield'
-    cost = 10
-    mana = 30
-    guard = 0.20
+class manaBag():
+    inGameName = 'Mana Bag'
+    hardid = 'manaBag'
+    cost = 50
+    
+    value1 = 25 # + max mana 
+    value2 = 5 # + mana regen
+
     rarity = 'common'
     level = 1
+class healthNecklace():
+    inGameName = 'Health Necklace'
+    hardid = 'healthNecklace'
+    cost = 150
+    
+    value1 = 25 # + max hp  | * level 
+    value2 = 1 # + hp regen | * level
 
-#please dont use
+    rarity = 'rare'
+    level = 2
+
