@@ -12,8 +12,8 @@ def enemyRound(player, me):
     while True:
         if (me.hp <= 20):
             if (me.mana) >= 25:
-                x = random.randint(0,2)
-                if (x) >= 1: return(me, player, 2)
+                x = random.randint(0,6)
+                if (x) >= 2: return(me, player, 2)
                 else: return(me, player, 1)
                 break
             break
