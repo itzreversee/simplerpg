@@ -1,4 +1,4 @@
-from lib.libinventory import *
+
 from lib.librps import getUserInput
 from lib.libmagic import *
 
