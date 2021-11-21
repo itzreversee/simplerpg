@@ -6,7 +6,7 @@ import time
 
 clearConsole()
 print("Super Basic RPG. version: 1.3_alpha (Battle Test)")
-time.sleep(3)
+time.sleep(1.5)
 
 def game():
     isBattleGoing = True
