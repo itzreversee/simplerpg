@@ -7,7 +7,8 @@
   <image src="https://img.shields.io/badge/version-1.4a-ff69b4?style=flat-plastic"/>
  </p>
 
-simplerpg, python terminal game made from scratch.  
+##### village test is now live in branch ```villagetest```! (currently broken)
+simplerpg, python terminal game made from scratch. 
 To launch battle with 'Silver Monster' type ```python3 battletest.py```  
   
 To edit things:
