@@ -2,7 +2,7 @@ from lib.libdraw import *
 from lib.libmagic import *
 from lib.randomthings import *
 from lib.libinput import getUserInput
-from enemylogic.silvermonster import entityLogic, enemyRound
+from entitylogic.silvermonster import entityLogic, enemyRound
 
 global isBattleGoing
 global battletype
