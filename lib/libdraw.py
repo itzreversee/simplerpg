@@ -7,8 +7,8 @@ from lib.randomthings import notimplemented
 def drawBasicMenu(player, enemy): 
     print('\n')
     print("| " + player.name + " | vs | " + enemy.name + " (" + str(enemy.hp) + " HP) |")
-    print("HP - " + str(player.hp))
-    print("MANA - " + str(player.mana))
+    bar(player.hp, player.maxhp, ' HP   |', '| REGEN - ' + str(player.hpregen) ); print("")
+    bar(player.mana, player.maxmana, ' MANA |', '| REGEN - ' + str(player.manaregen) ); print("")
 
 def drawBattleMenu():
     print("\nWhat to do?")
@@ -30,3 +30,15 @@ def drawSpellMenu(player):
    
 
     return('spell') # current menu
+
+# copied from http://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console
+
+def bar(iteration, total, prefix = ' |', suffix = '| ', ):
+    decimals = 1
+    length = 20
+    fill = '█'
+    printEnd = "\r"
+    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+    filledLength = int(length * iteration // total)
+    bar = fill * filledLength + '-' * (length - filledLength)
+    print(f'\r{prefix} |{bar}| {percent}% ({iteration}) {suffix}', end = printEnd)
