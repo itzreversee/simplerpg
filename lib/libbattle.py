@@ -17,7 +17,6 @@ def battle(p, e):
     isBattleGoing = True
     while isBattleGoing:
         clearConsole()
-        #sketch
 
         ambient(p)
         ambient(e)
