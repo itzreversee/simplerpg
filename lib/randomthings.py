@@ -13,3 +13,11 @@ def clearConsole():
     if os.name in ('nt', 'dos'): 
         command = 'cls'
     os.system(command)
+
+class game():
+    version = '1.4a'
+    stable = False
+
+    def isStable():
+        if (game.stable) == False: return('unstable')
+        if (game.stable) == True: return('stable')

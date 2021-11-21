@@ -5,7 +5,10 @@ from lib.randomthings import *
 import time
 
 clearConsole()
-print("Super Basic RPG. version: 1.3_alpha (Battle Test)")
+
+
+print("simpleRPG. version: "+ game.version +' '+game.isStable() +" (Battle Test)")
+
 time.sleep(1.5)
 
 def game():
