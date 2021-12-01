@@ -4,7 +4,7 @@
   <image src="https://img.shields.io/github/repo-size/reversee-dev/simplerpg?style=flat-plastic"/>
   <image src="https://img.shields.io/github/stars/reversee-dev/simplerpg?style=social"/>
   <image src="https://img.shields.io/badge/python-3.9.7-blueviolet?style=flat-plastic"/>
-  <image src="https://img.shields.io/badge/version-1.4a-ff69b4?style=flat-plastic"/>
+  <image src="https://img.shields.io/badge/version-villagetest-ff69b4?style=flat-plastic"/>
  </p>
 
 world test with village.
