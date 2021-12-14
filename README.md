@@ -7,10 +7,11 @@
   <image src="https://img.shields.io/badge/version-1.4a-ff69b4?style=flat-plastic"/>
  </p>
 
-##### village test is now live in branch ```villagetest```! (ALMOST DONE!)
-simplerpg, python terminal game made from scratch. 
-To launch battle with 'Silver Monster' type ```python3 battletest.py```  
+##### village test is now live in branch ```villagetest```! (DONE! MERGING!)
+simplerpg, python terminal game made from scratch.  
+To open the launcher, run ```python3 launcher.py``` in your terminal! ( at the time of reading, villagetest haven't merged with main, please use ```python3 battletest.py``` instead, thank you!)  
+  
 To Mod stuff, check wiki for file and libraries documentation.  
 
 ### Warning!
-* Only tested on Arch Linux, please create an issue if not wokring on windows!
+ * v1.4a custom entities aren't fully compatible with v2a
