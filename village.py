@@ -9,7 +9,7 @@ import time
 
 clearConsole()
 
-print("simpleRPG. version: "+ game.version +' '+game.isStable() +" (runtime : Village Test)")
+print("simpleRPG. version: "+ game.version + game.isStable() +" (runtime : village.py)")
 time.sleep(1.5)
 
 def game():

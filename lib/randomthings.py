@@ -16,9 +16,9 @@ def clearConsole():
     os.system(command)
 
 class game():
-    version = 'villagetest'
-    stable = False
+    version = '2a'
+    stable = True
 
     def isStable():
-        if (game.stable) == False: return('unstable')
-        if (game.stable) == True: return('stable')
+        if (game.stable) == False: return('-unstable')
+        if (game.stable) == True: return('-stable')
