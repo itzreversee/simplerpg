@@ -7,7 +7,7 @@
   <image src="https://img.shields.io/badge/version-1.4a-ff69b4?style=flat-plastic"/>
  </p>
 
-##### village test is now live in branch ```villagetest```! (currently broken)
+##### village test is now live in branch ```villagetest```! (ALMOST DONE!)
 simplerpg, python terminal game made from scratch. 
 To launch battle with 'Silver Monster' type ```python3 battletest.py```  
 To Mod stuff, check wiki for file and libraries documentation.  
