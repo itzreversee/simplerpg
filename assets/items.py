@@ -1,4 +1,5 @@
 class manaBag():
+    type = 0
     inGameName = 'Mana Bag'
     hardid = 'manaBag'
     cost = 50
@@ -9,6 +10,7 @@ class manaBag():
     rarity = 'common'
     level = 1
 class healthNecklace():
+    type = 1
     inGameName = 'Health Necklace'
     hardid = 'healthNecklace'
     cost = 150

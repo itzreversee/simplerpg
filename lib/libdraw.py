@@ -8,8 +8,8 @@ def drawBasicWorldMenu(p):
     print('\n')
     print("| " + p.name + " |")
     bar(p.exp, p.nextlevel, ' EXP  |', '| LEVEL - ' + str(p.level) + ', EXP until next LEVEL '+ str(p.nextlevel) + ', GOLD - ' + str(p.gold)); print("")
-    bar(p.hp, p.maxhp, ' HP   |', '| REGEN - ' + str(p.hpregen) ); print("")
-    bar(p.mana, p.maxmana, ' MANA |', '| REGEN - ' + str(p.manaregen) ); print("")
+    bar(p.hp, p.maxhp, ' HP   |', '/ ' + str(p.maxhp) + ' | REGEN - ' + str(p.hpregen) ); print("")
+    bar(p.mana, p.maxmana, ' MANA |', '/ ' + str(p.maxmana) + ' | REGEN - ' + str(p.manaregen) ); print("")
 
     print("\nSpells:")
     for i in range(len(p.inventory)):
