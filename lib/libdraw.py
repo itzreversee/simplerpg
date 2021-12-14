@@ -4,9 +4,9 @@ from assets.items import *
 
 from lib.randomthings import notImplemented
 
-def drawBasicWorldMenu(p):
+def drawBasicWorldMenu(p, location):
     print('\n')
-    print("| " + p.name + " |")
+    print("| " + p.name + " | " + location)
     bar(p.exp, p.nextlevel, ' EXP  |', '| LEVEL - ' + str(p.level) + ', EXP until next LEVEL '+ str(p.nextlevel) + ', GOLD - ' + str(p.gold)); print("")
     bar(p.hp, p.maxhp, ' HP   |', '/ ' + str(p.maxhp) + ' | REGEN - ' + str(p.hpregen) ); print("")
     bar(p.mana, p.maxmana, ' MANA |', '/ ' + str(p.maxmana) + ' | REGEN - ' + str(p.manaregen) ); print("")
@@ -30,11 +30,11 @@ def drawWorldMenu():
 
 def drawShopMenu(p, s):
     print("\nWhat to buy? ")
-    for i in range(len(p.items)):
+    for i in range(3):
        if (i) == 0: pkey = 'q - '
        if (i) == 1: pkey = 'w - '
        if (i) == 2: pkey = 'e - '
-       print(" "+ pkey + eval(p.items[i].hardid).inGameName + ', level: ' + str(eval(p.items[i].hardid).level))
+       print(" "+ pkey + str(s[i].inGameName) + ', rarity: ' + str(s[i].level) + ', price: ' + str(s[i].cost))
     
     return('shop') # current menu
 
@@ -63,6 +63,17 @@ def drawSpellMenu(player):
    
 
     return('spell') # current menu
+
+def printItemInfo(stats):
+    if stats[0] == 0: sprefix = [" + MAX MANA: ", " + MANA REGEN: "]
+    if stats[0] == 1: sprefix = [" + MAX HP: ", " + HP REGEN: "]
+    print(" Stats: ")
+    print("  Description: " + stats[1])
+    for i in range(len(sprefix)):
+        a = i + 4; print(" {}{}".format(sprefix[i], stats[a]))
+    print("  Rarity: " + str(stats[2]))
+    print("  Level: " + str(stats[3]))
+    print(" Do you want to buy this item? (q/*) ")
 
 # copied from http://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console
 
