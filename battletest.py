@@ -3,11 +3,11 @@ from lib.libsave import *
 from lib.libbattle import *
 from lib.libentity import silvermonster
 from lib.randomthings import *
-import time
+import time, sys
 
 clearConsole()
 
-print("simpleRPG. version: "+ game.version +' '+game.isStable() +" (runtime : Battle Test)")
+print("simpleRPG. version: "+ game.version +' '+game.isStable() +" (runtime : " + sys.argv[0] + ") ")
 time.sleep(1.5)
 
 def game():
