@@ -130,7 +130,10 @@ def buy(p, item): # BUY MENU
         p.gold -= item.cost; p.items.append(item);
         print("You bought " + item.inGameName + "!"); reload(ssave, p);
         print("You bought " + item.inGameName + "!"); reload(ssave, p);
-        
+    
+    # WAIT FOR PLAYER
+    print("\nPress any key to continue...");  time.sleep(0.75); getch()  
+
 
 def getShopStock(count): # GET SHOP STOCK
     global seed;
