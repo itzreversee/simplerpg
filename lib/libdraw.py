@@ -1,9 +1,57 @@
 
 from lib.libmagic import *
+from assets.items import *
 
-from lib.randomthings import notimplemented
+from lib.randomthings import notImplemented
 
-def drawBasicMenu(player, enemy, rounds): 
+def drawBasicWorldMenu(p, location):
+    print('\n')
+    print("| " + p.name + " | " + location)
+    bar(p.exp, p.nextlevel, ' EXP  |', '| LEVEL - ' + str(p.level) + ', EXP until next LEVEL '+ str(p.nextlevel) + ', GOLD - ' + str(p.gold)); print("")
+    bar(p.hp, p.maxhp, ' HP   |', '/ ' + str(p.maxhp) + ' | REGEN - ' + str(p.hpregen) ); print("")
+    bar(p.mana, p.maxmana, ' MANA |', '/ ' + str(p.maxmana) + ' | REGEN - ' + str(p.manaregen) ); print("")
+
+    print("\nSpells:")
+    for i in range(len(p.inventory)):
+        print(" "+eval(p.inventory[i].hardid).name + ', cost: ' + str(eval(p.inventory[i].hardid).cost) + ' mana')
+   
+    print("\nItems:")
+    for i in range(len(p.items)):
+        print(" "+eval(p.items[i].hardid).inGameName + ', level: ' + str(eval(p.items[i].hardid).level))
+   
+
+def drawWorldMenu():
+    print("\nWhat to do?")
+    print(" q - shop ")
+    print(" w - sleep")
+    print(" e - exit village")
+    
+    return('village') # current menu
+
+def drawInnMenu():
+    print("\nWhat to do?")
+    print(" q - sleep")
+    print(" w - breakfast (cost : 35 gold) ")
+    print(" e - back to village")
+
+def drawSleepMenu():
+    print("\nHow do you want to sleep?")
+    print(" q - normal sleep (20 GOLD) ")
+    print(" w - premium sleep (50 GOLD) ")
+    print(" e - premium sleep + breakfast (75 gold) ")
+    print(" r - back")
+
+def drawShopMenu(p, s):
+    print("\nWhat to buy? ")
+    for i in range(3):
+       if (i) == 0: pkey = 'q - '
+       if (i) == 1: pkey = 'w - '
+       if (i) == 2: pkey = 'e - '
+       print(" "+ pkey + str(s[i].inGameName) + ', rarity: ' + str(s[i].level) + ', price: ' + str(s[i].cost))
+    
+    return('shop') # current menu
+
+def drawBasicBattleMenu(player, enemy, rounds): 
     print('\n')
     print("| " + player.name + " | vs | " + enemy.name + " (" + str(enemy.hp) + " HP) | ROUND " + str(rounds))
     bar(player.hp, player.maxhp, ' HP   |', '| REGEN - ' + str(player.hpregen) ); print("")
@@ -16,8 +64,7 @@ def drawBattleMenu():
     print(" e - skip round")
     
     return('battle') # current menu
-
-        
+  
 
 def drawSpellMenu(player):
     print("\nYour Spells: ")
@@ -30,6 +77,17 @@ def drawSpellMenu(player):
 
     return('spell') # current menu
 
+def printItemInfo(stats):
+    if stats[0] == 0: sprefix = [" + MAX MANA: ", " + MANA REGEN: "]
+    if stats[0] == 1: sprefix = [" + MAX HP: ", " + HP REGEN: "]
+    print(" Stats: ")
+    print("  Description: " + stats[1])
+    for i in range(len(sprefix)):
+        a = i + 4; print(" {}{}".format(sprefix[i], stats[a]))
+    print("  Rarity: " + str(stats[2]))
+    print("  Level: " + str(stats[3]))
+    print(" Do you want to buy this item? (q/*) ")
+
 # copied from http://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console
 
 def bar(iteration, total, prefix = ' |', suffix = '| ', ):
@@ -41,11 +99,3 @@ def bar(iteration, total, prefix = ' |', suffix = '| ', ):
     filledLength = int(length * iteration // total)
     bar = fill * filledLength + '-' * (length - filledLength)
     print(f'\r{prefix} |{bar}| {percent}% ({iteration}) {suffix}', end = printEnd)
-
-def drawWorld(map): # DO NOT USE
-    lines = map.readlines()
-    for lines in lines:
-        print(lines)
-
-def drawWorldMenu(player):
-    print('a')

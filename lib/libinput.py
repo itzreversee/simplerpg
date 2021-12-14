@@ -1,5 +1,6 @@
 # modified version of librps, original and remix made by reversee
 
+from sys import platform
 import random
 
 global userinput, cpuinput
@@ -20,40 +21,21 @@ def formatInput(input):
     elif (z.startswith("X") or z.startswith("Z")): exit()
     else: return(3)
 
-# got code from https://code.activestate.com/recipes/134892/
-class _Getch:
-    def __init__(self):
-        try:
-            self.impl = _GetchWindows()
-        except ImportError:
-            self.impl = _GetchUnix()
+def getch():
+    if platform == "win32":
+        import msvcrt
+        return(msvcrt.getch().decode('ASCII'))
+    else: 
+        
+        # https://gist.github.com/sidequestboy/9205174
 
-    def __call__(self): return self.impl()
-
-
-class _GetchUnix:
-    def __init__(self):
-        import tty, sys
-
-    def __call__(self):
-        import sys, tty, termios
+        import sys, tty, termios 
         fd = sys.stdin.fileno()
         old_settings = termios.tcgetattr(fd)
         try:
-            tty.setraw(sys.stdin.fileno())
+            tty.setraw(fd)
             ch = sys.stdin.read(1)
         finally:
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
 
-
-class _GetchWindows:
-    def __init__(self):
-        import msvcrt
-
-    def __call__(self):
-        import msvcrt
-        return msvcrt.getch()
-
-
-getch = _Getch()

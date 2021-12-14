@@ -1,8 +1,9 @@
 import time
 import os
 
-def notimplemented():
-    print("not implemented")
+def notImplemented(f = ''):
+    if (f) == '': print("not implemented")
+    else: print(f + ' is not implemented')
     time.sleep(1)
 
     return()
@@ -15,7 +16,7 @@ def clearConsole():
     os.system(command)
 
 class game():
-    version = '1.4a'
+    version = 'villagetest'
     stable = False
 
     def isStable():

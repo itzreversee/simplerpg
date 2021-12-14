@@ -8,7 +8,7 @@
   <image src="https://img.shields.io/badge/version-1.4a-ff69b4?style=flat-plastic"/>
 </p>
 
-##### village test is now live in branch ```villagetest```! (DONE! MERGING!)
+##### Version v2a | merge villagetest -> main | next: launcher
 To open the launcher, run ```python3 launcher.py``` in your terminal! ( at the time of reading, villagetest haven't merged with main, please use ```python3 battletest.py``` instead, thank you!)  
   
 To Mod stuff, check wiki for file and libraries documentation.  
