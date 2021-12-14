@@ -28,6 +28,19 @@ def drawWorldMenu():
     
     return('village') # current menu
 
+def drawInnMenu():
+    print("\nWhat to do?")
+    print(" q - sleep")
+    print(" w - breakfast (cost : 35 gold) ")
+    print(" e - back to village")
+
+def drawSleepMenu():
+    print("\nHow do you want to sleep?")
+    print(" q - normal sleep (20 GOLD) ")
+    print(" w - premium sleep (50 GOLD) ")
+    print(" e - premium sleep + breakfast (75 gold) ")
+    print(" r - back")
+
 def drawShopMenu(p, s):
     print("\nWhat to buy? ")
     for i in range(3):
