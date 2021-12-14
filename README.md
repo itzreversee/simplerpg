@@ -12,7 +12,7 @@
 ##### Version v2a | merge villagetest -> main | next: launcher
 To open the launcher, run ```python3 launcher.py``` in your terminal! ( at the time of reading, launcher isn't done. please use ```python3 new_save.py``` to create new save and ```python3 village.py / battletest.py``` to launch the game, thank you!)  
   
-To Mod stuff, check wiki for file and libraries documentation.  
+To Mod stuff, check wiki for file and libraries documentation (not updated for 2a-stable).  
 
 ### Warning!
  * v1.4a custom entities aren't fully compatible with v2a
