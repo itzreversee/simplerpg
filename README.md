@@ -9,7 +9,7 @@
 </p>
 
 ##### village test is now live in branch ```villagetest```! (DONE! MERGING!)
-To open the launcher, run ```python3 launcher.py``` in your terminal! ( at the time of reading, launcher isn't complete, use ```python3 village.py``` or ```battletest.py``` to launch world (village) or battle on one save file! )  
+To open the launcher, run ```python3 launcher.py``` in your terminal! ( at the time of reading, launcher isn't complete, use ```python3 village.py``` or ```battletest.py``` to launch world (village) or battle on one save file! BUT BEFORE! launch ```python3 new_save.py``` to create new save!)  
   
 To Mod stuff, check wiki for file and libraries documentation.  
 
