@@ -60,7 +60,7 @@ def sleep(p):
         else: break;
 
 def innEvent(p, type):
-    if (p.hp >= p.maxhp) or (p.mana >= p.maxmana): print("\nYou are already at max stats!"); getch(); return;
+    if (p.hp >= p.maxhp) and (p.mana >= p.maxmana): print("\nYou are already at max stats!"); getch(); return;
 
     if type == 0: # NORMAL SLEEP ( FOR SMALL VILLAGE ) ( 20 GOLD )
         if (p.gold < 20): print("\nYou don't have enough gold!"); return;
