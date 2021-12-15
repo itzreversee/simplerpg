@@ -1,7 +1,7 @@
 <p align="center"> <image src="simpleRpg.svg" height=136/> <p/>
 <p align="center"> a python game, made from scratch. </center>
 <p align="center">
-  <image src="https://img.shields.io/github/last-commit/reversee-dev/simplerpg/main?style=flat-plastic"/>
+  <image src="https://img.shields.io/github/last-commit/reversee-dev/simplerpg/stable?style=flat-plastic"/>
   <image src="https://img.shields.io/github/repo-size/reversee-dev/simplerpg?style=flat-plastic"/>
   <image src="https://img.shields.io/github/stars/reversee-dev/simplerpg?style=social"/>
   <image src="https://img.shields.io/badge/python-3.9.7-blueviolet?style=flat-plastic"/>
