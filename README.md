@@ -4,7 +4,7 @@
   <image src="https://img.shields.io/github/last-commit/reversee-dev/simplerpg/stable?style=flat-plastic"/>
   <image src="https://img.shields.io/github/repo-size/reversee-dev/simplerpg?style=flat-plastic"/>
   <image src="https://img.shields.io/github/stars/reversee-dev/simplerpg?style=social"/>
-  <image src="https://img.shields.io/badge/python-3.9.7-blueviolet?style=flat-plastic"/>
+  <image src="https://img.shields.io/badge/python-3.9.9-blueviolet?style=flat-plastic"/>
   <image src="https://img.shields.io/badge/version-2a-ff69b4?style=flat-plastic"/>
   <image src="https://img.shields.io/badge/stable-ff6ba2?style=flat-plastic"/>
 </p>
