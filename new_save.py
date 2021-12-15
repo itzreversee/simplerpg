@@ -19,5 +19,7 @@ maciek = basePlayer(
     250, 0, 1, 100, # gold, exp, level, nextlevel
     False, 0, 6) # isEnemy, curseLeft, curseId
 
-smanager.save("s0.pkl", maciek)
-print("")
+def createDefaultSaveFile():
+    smanager.save("s0.pkl", maciek)
+
+createDefaultSaveFile()
