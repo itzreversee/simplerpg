@@ -12,7 +12,8 @@
 ##### Version v2a | merge villagetest -> main | next: launcher
 To open the launcher, run ```python3 launcher.py``` in your terminal!
   
-To Mod stuff, check wiki for file and libraries documentation (not updated for 2a-stable).  
+To Mod stuff, check out [modloader](https://github.com/reversee-dev/srpg-modloader), and [modrepo](https://github.com/reversee-dev/srpg-modrepo)!  
+You can also create your own mods! The wiki will soon be updated! 
 
 ### Warning!
  * v1.4a custom entities aren't fully compatible with v2a
