@@ -18,13 +18,19 @@ def formatInput(input):
     elif (z.startswith("w") or z.startswith("W")): return 1
     elif (z.startswith("e") or z.startswith("E")): return 2
     elif (z.startswith("r") or z.startswith("R")): return 4
+    #elif (z.startswith("t") or z.startswith("T")): return 5 # will be used later
+    #elif (z.startswith("y") or z.startswith("Y")): return 6 # in new updates
     elif (z.startswith("X") or z.startswith("Z")): exit()
     else: return(3)
 
 def getch():
     if platform == "win32":
         import msvcrt
-        return(msvcrt.getch().decode('ASCII'))
+        try: 
+            usi = msvcrt.getch().decode('ASCII')
+            return(usi)
+        except UnicodeDecodeError:
+            return(4) 
     else: 
         
         # https://gist.github.com/sidequestboy/9205174
