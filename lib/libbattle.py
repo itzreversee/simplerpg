@@ -98,6 +98,10 @@ def ambient(p):
     p.mana = p.mana + p.manaregen
     if p.mana > p.maxmana:
         p.mana = p.maxmana
+    
+    p.hp = p.hp + p.hpregen
+    if p.hp > p.maxhp:
+        p.hp = p.maxhp
 
     if (p.curseLeft) >= 1: 
         if (p.curseId) == 6: p.hp = p.hp - CurseSpell.value
