@@ -1,14 +1,14 @@
 import random
 from lib.libbattle import *
 
-class entityLogic(): 
+class entityLogic():  # WILL BE DELETED IN DUNGEONS UPDATE
     location = 'all',
     rarity = 'common',
     rarityint = 15
     killexp = 25,
     enemylevel = 3
 
-def enemyRound(player, me):
+def enemyRound(player, me): # PREBUILD "AI" FOR SILVER MONSTER
     while True:
         if (me.hp <= 20):
             if (me.mana) >= 25:
