@@ -58,5 +58,8 @@ while True:
     if (menuinput) == 1: 
         from battletest import *
         game()
+    if (menuinput) == 4: 
+        from lib.libvoid import friendshipsimulator
+        friendshipsimulator()
     
     
