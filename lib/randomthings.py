@@ -16,7 +16,7 @@ def clearConsole():
     os.system(command)
 
 class game():
-    version = '2a'
+    version = '2.1a'
     stable = True
 
     def isStable():
