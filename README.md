@@ -1,4 +1,4 @@
-<p align="center"> <image src="simpleRpg.svg" height=136/> <p/>
+<p align="center"> <image src="srpg.svg" height=136/> <p/>
 <p align="center"> a python game, made from scratch. </center>
 <p align="center">
   <image src="https://img.shields.io/github/last-commit/reversee-dev/simplerpg/stable?style=flat-plastic"/>
