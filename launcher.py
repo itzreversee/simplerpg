@@ -16,24 +16,40 @@ print("\nLoading default save file: \"s0.pkl\"")
 player = smanager.load("s0.pkl")
 time.sleep(0.2); 
 
+modules = ['climage'] # modules required 
+nomod = False 
 
+try: # check for modules
+    import climage
+    # from playsound import playsound 
+except ModuleNotFoundError:
+    nomod = True
 
-while True:
-    modulename = "climage"
+if nomod: # install if not found
+        print("Hey! In order to play srpg, you need these things!")
+        print(f" - {modules[0]}")
+        # print(f" - {modules[1]}")
+        time.sleep(0.1); print("Do you want to install it now? (q/*)")
+        a = getUserInput();
+        if a == 0: 
+            time.sleep(0.3)
+            install(modules[0])
+            install(modules[1])
+            getUserInput()
+        else: 
+            print("See ya!")
+            input(); exit()
+
+while True: 
     clearConsole()
-    if not modulename in sys.modules:
-        import climage 
-        print(climage.convert('assets/srpgmini.png', is_unicode=True)) 
-    
-    else: 
-        print(" [hint] climage is not installed. You can install it using 'python3 -m pip install climage'. For now it isn't required but that MIGHT change in the future!")
+
+    print(climage.convert('assets/srpgmini.png', is_unicode=True))  # logo 
 
     time.sleep(0.2);
-    print("\nSelect game preset: ")
+    print("\nSelect game preset: ") # presets
     print(" q - Village ")
     print(" w - Battle (progress is not saved) ")
     (menuinput) = getUserInput()
-
     if (menuinput) == 0: 
         from village import *
         game()
