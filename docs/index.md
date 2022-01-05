@@ -11,19 +11,19 @@
 
 <p>
 Welcome traveler to this simple rpg game built with python!   
-It's point is to make a stable rpg game engine with using as little external packages as possible!  
+It's point is to make a stable rpg game engine with using as little external packages as possible!  <br />
 
-## Download
-Here are all version for downloads (github releases):
- * Quick Fixes ( v2.1a ) - January 5, 2022 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/2.1a-stable) ( newest )**
- * Village Core ( v2a ) - December 14, 2021 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/2a-stable)**
- * Battle Engine ( v1.4a-unstable ) - November 21, 2021 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/1.4a-unstable)**
+## Download<br />
+Here are all version for downloads (github releases):<br />
+ * Quick Fixes ( v2.1a ) - January 5, 2022 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/2.1a-stable) ( newest )**<br />
+ * Village Core ( v2a ) - December 14, 2021 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/2a-stable)**<br />
+ * Battle Engine ( v1.4a-unstable ) - November 21, 2021 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/1.4a-unstable)**<br />
 
-### Branches
- * stable - Most stable branch, it is where the release are made!
- * unstable - not so stable, but playable ( i think ) - **NOT CREATED YET**
- * edge - don't touch that! it is broken all the time - **NOT CREATED YET** 
- * *test - eg. villagetest, it is testing branch for some major things that aparently need entirely diffrent code, and then i will have trouble merging it into unstable... 
+### Branches<br />
+ * stable - Most stable branch, it is where the release are made!<br />
+ * unstable - not so stable, but playable ( i think ) - **NOT CREATED YET**<br />
+ * edge - don't touch that! it is broken all the time - **NOT CREATED YET** <br />
+ * *test - eg. villagetest, it is testing branch for some major things that aparently need entirely diffrent code, and then i will have trouble merging it into unstable... <br />
 
-### Soon, more!
+### Soon, more!<br />
 </p>
