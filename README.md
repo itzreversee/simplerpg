@@ -8,7 +8,7 @@
   <image src="https://img.shields.io/badge/unstable-ff6ba2?style=flat-plastic"/>
 </p>
 
-##### Version Unstable
+### Version Unstable
 To open the launcher, run ```python3 launcher.py``` in your terminal!  
 Remember that this is unstable branch! Stuff might break!!
 
