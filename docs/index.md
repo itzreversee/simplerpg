@@ -9,6 +9,7 @@
   <image src="https://img.shields.io/badge/stable-ff6ba2?style=flat-plastic"/>
 </p>
 
+<p>
 Welcome traveler to this simple rpg game built with python!   
 It's point is to make a stable rpg game engine with using as little external packages as possible!  
 
@@ -25,3 +26,4 @@ Here are all version for downloads (github releases):
  * *test - eg. villagetest, it is testing branch for some major things that aparently need entirely diffrent code, and then i will have trouble merging it into unstable... 
 
 ### Soon, more!
+</p>
