@@ -12,4 +12,5 @@
 Welcome traveler to this simple rpg game built with python!   
 It's point is to make a stable rpg game engine with using as little external packages as possible!  
 
+  
 This website will be soon updated!
