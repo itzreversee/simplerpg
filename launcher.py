@@ -16,16 +16,18 @@ print("\nLoading default save file: \"s0.pkl\"")
 player = smanager.load("s0.pkl")
 time.sleep(0.2); 
 
-modules = ['climage'] # modules required 
-nomod = False 
+if game.enforceModules == True:
 
-try: # check for modules
-    import climage
-    # from playsound import playsound 
-except ModuleNotFoundError:
-    nomod = True
+    modules = ['climage'] # modules required 
+    nomod = False 
 
-if nomod: # install if not found
+    try: # check for modules
+        import climage
+        # from playsound import playsound 
+    except ModuleNotFoundError:
+        nomod = True
+
+    if nomod: # install if not found
         print("Hey! In order to play srpg, you need these things!")
         print(f" - {modules[0]}")
         # print(f" - {modules[1]}")
@@ -43,7 +45,7 @@ if nomod: # install if not found
 while True: 
     clearConsole()
 
-    print(climage.convert('assets/srpgmini.png', is_unicode=True))  # logo 
+    if "climage" in sys.modules: print(climage.convert('assets/srpgmini.png', is_unicode=True))  # logo 
 
     time.sleep(0.2);
     print("\nSelect game preset: ") # presets

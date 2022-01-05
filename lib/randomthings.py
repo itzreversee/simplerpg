@@ -27,6 +27,7 @@ def whatOS():
 class game():
     version = '2.2a'
     stable = False
+    enforceModules = False
 
     def isStable():
         if (game.stable) == False: return('-unstable')
