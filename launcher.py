@@ -16,8 +16,19 @@ print("\nLoading default save file: \"s0.pkl\"")
 player = smanager.load("s0.pkl")
 time.sleep(0.2); 
 
+
+
 while True:
+    modulename = "climage"
     clearConsole()
+    if not modulename in sys.modules:
+        import climage 
+        print(climage.convert('assets/srpgmini.png', is_unicode=True)) 
+    
+    else: 
+        print(" [hint] climage is not installed. You can install it using 'python3 -m pip install climage'. For now it isn't required but that MIGHT change in the future!")
+
+    time.sleep(0.2);
     print("\nSelect game preset: ")
     print(" q - Village ")
     print(" w - Battle (progress is not saved) ")
