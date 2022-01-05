@@ -15,5 +15,11 @@ To open the launcher, run ```python3 launcher.py``` in your terminal!
 To Mod stuff, check out [modloader](https://github.com/reversee-dev/srpg-modloader), and [modrepo](https://github.com/reversee-dev/srpg-modrepo)!  
 You can also create your own mods! The wiki will soon be updated! 
 
+### Versions
+ * Battle Engine ( v1.4a-unstable ) - November 21, 2021 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/1.4a-unstable)**
+ * Village Core ( v2a ) - December 14, 2021 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/2a-stable)**
+ * Quick Fixes ( v2.1a ) - January 5, 2022 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/2.1a-stable) ( newest )**
+
 ### Warning!
  * v1.4a custom entities aren't fully compatible with v2.1a
+
