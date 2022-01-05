@@ -1,5 +1,5 @@
 <p align="center"> <image src="../srpg.svg" height=136/> <p/>
-<p align="center"> a python game, made from scratch. </center>
+<p align="center"> a python game, made from scratch. </p>
 <p align="center">
   <image src="https://img.shields.io/github/last-commit/reversee-dev/simplerpg/stable?style=flat-plastic"/>
   <image src="https://img.shields.io/github/repo-size/reversee-dev/simplerpg?style=flat-plastic"/>
