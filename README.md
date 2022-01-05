@@ -22,7 +22,7 @@ You can also create your own mods! ~~The wiki will soon be updated!~~ wiki will 
 
 ### Branches
  * stable - Most stable branch, it is where the release are made!
- * unstable - not so stable, but playable ( i think ) - **NOT CREATED YET**
+ * unstable - not so stable, but playable ( i think ) 
  * edge - don't touch that! it is broken all the time - **NOT CREATED YET** 
  * *test - eg. villagetest, it is testing branch for some major things that aparently need entirely diffrent code, and then i will have trouble merging it into unstable... 
 
