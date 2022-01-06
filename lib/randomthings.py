@@ -25,7 +25,7 @@ def whatOS():
     else: return('unix')
 
 class game():
-    version = '2.2-5a'
+    version = '2.2-6a'
     stable = False
     enforceModules = False
 
