@@ -9,7 +9,7 @@
   <image src="https://img.shields.io/badge/stable-ff6ba2?style=flat-plastic"/>
 </p>
 
-##### Version v2.1a | Stable
+### Version v2.1a | Stable
 To open the launcher, run ```python3 launcher.py``` in your terminal!
   
 To Mod stuff, check out [modloader](https://github.com/reversee-dev/srpg-modloader), and [modrepo](https://github.com/reversee-dev/srpg-modrepo)!  
