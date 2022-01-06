@@ -8,7 +8,7 @@ clearConsole()
 print("simpleRPG. version: "+ game.version + game.isStable() +" (runtime : " + sys.argv[0] + ")")
 time.sleep(1.5)
 
-if not (os.path.isfile("s0.pkl")):
+if not (os.path.isfile("s0.pkl")) or not os.path.isfile("s0_seed.pkl") or not os.path.isfile("s0_sstock.pkl"):
     from new_save import createDefaultSaveFile
     createDefaultSaveFile()
 

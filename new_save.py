@@ -8,7 +8,7 @@ import time, sys
 
 clearConsole()
 
-print("simpleRPG. version: "+ game.version +' '+game.isStable() +" (runtime : "+sys.argv[0]+" )")
+print("simpleRPG. version: "+ game.version +' '+game.isStable() +" (runtime : "+sys.argv[0]+" )") # remember
 time.sleep(1.5)
 
 maciek = baseEntity(
@@ -21,5 +21,6 @@ maciek = baseEntity(
 
 def createDefaultSaveFile():
     smanager.save("s0.pkl", maciek)
+    smanager.world.newSave()
 
 createDefaultSaveFile()

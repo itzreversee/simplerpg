@@ -1,11 +1,11 @@
 from lib.libentity import player, baseEntity
-import pickle
+import pickle, random
 
 class smanager():
     def save(savefile, p):
         with open(savefile, 'wb') as s:
             pickle.dump(baseEntity(p.name, p.location, p.hp, p.maxhp, p.basemaxhp, p.basehpregen, p.hpregen, p.mana, p.maxmana, p.manaregen, p.basemana, p.basemanaregen, p.maxitems, p.inventory, p.items, p.gold, p.exp, p.level, p.nextlevel, p.isEnemy, p.curseLeft, p.curseId), s, pickle.HIGHEST_PROTOCOL)
-            pickle.dump(p.location, s, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(p.location, s, pickle.HIGHEST_PROTOCOL) 
             pickle.dump(p.hp, s, pickle.HIGHEST_PROTOCOL)
             pickle.dump(p.maxhp, s, pickle.HIGHEST_PROTOCOL)
             pickle.dump(p.basemaxhp, s, pickle.HIGHEST_PROTOCOL)
@@ -26,6 +26,17 @@ class smanager():
             pickle.dump(p.isEnemy, s, pickle.HIGHEST_PROTOCOL)
             pickle.dump(p.curseLeft, s, pickle.HIGHEST_PROTOCOL)
             pickle.dump(p.curseId, s, pickle.HIGHEST_PROTOCOL)
+    class world():
+        seed = 0
+        shopstock = []
+        def save(seed, shopstock):
+            seedfile = open("s0_seed.pkl", "wb")
+            sstock = open("s0_sstock.pkl", "wb")
+            pickle.dump(seed, seedfile, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(shopstock, sstock, pickle.HIGHEST_PROTOCOL)
+        def newSave():
+            smanager.world.save(random.randint(111111,99999999), [])
+
 
     def load(savefile):
         with open(savefile, 'rb') as s:
