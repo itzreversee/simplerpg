@@ -5,14 +5,15 @@
   <image src="https://img.shields.io/github/repo-size/reversee-dev/simplerpg?style=flat-plastic"/>
   <image src="https://img.shields.io/github/stars/reversee-dev/simplerpg?style=social"/>
   <image src="https://img.shields.io/badge/python-3.10-blueviolet?style=flat-plastic"/>
-  <image src="https://img.shields.io/badge/version-2.1a-ff69b4?style=flat-plastic"/>
+  <image src="https://img.shields.io/badge/version-2.2a-ff69b4?style=flat-plastic"/>
   <image src="https://img.shields.io/badge/stable-ff6ba2?style=flat-plastic"/>
 </p>
 
 <p>Welcome traveler to this simple rpg game built with python!<br/>Its point is to make a stable rpg game engine with using as little external packages as possible! <br /> </p> 
 <h2>Download</h2>
 <p>Here are all version for downloads (github releases):<br /></p>
-<li>Quick Fixes ( v2.1a ) - January 5, 2022 <strong>-  <a href="https://github.com/reversee-dev/simplerpg/releases/tag/2.1a-stable">download</a> ( newest )</strong></li>
+<li>Ai & World Update ( v2.2a ) - January 6, 2022 <strong>- > <a href="https://github.com/reversee-dev/simplerpg/releases/tag/2.2a-stable">download</a> (latest) </strong></li>
+<li>Quick Fixes ( v2.1a ) - January 5, 2022 <strong>-  <a href="https://github.com/reversee-dev/simplerpg/releases/tag/2.1a-stable">download</a></strong></li>
 <li>Village Core ( v2a ) - December 14, 2021 <strong>- &gt; <a href="https://github.com/reversee-dev/simplerpg/releases/tag/2a-stable">download</a></strong></li>
 <li>Battle Engine ( v1.4a-unstable ) - November 21, 2021 <strong>- &gt; <a href="https://github.com/reversee-dev/simplerpg/releases/tag/1.4a-unstable">download</a>
   
