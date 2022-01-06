@@ -4,43 +4,51 @@ from lib.libbattle import *
 def getEasyAi(p, m):
     # get entity spells
     spells = []
+    rt = -1
     for i in range(len(m.inventory)): 
         spells.append(m.inventory[i])
+    i = -1
 
-    for i in range(len(spells)):
-        if spells[i].cost > m.mana : return 9 # skip round 
+    while True:
+        i += 1
+        if i >= len(spells): break; 
+        
+        if spells[i].cost > m.mana : rt = 9; break; # skip round 
+        elif m.hp < m.hp/8:
+            x = random.randint(0, 2)
+            if x == 1: return 8; break;
         else: 
             if spells[i].type == 'damage' or 'curse':
-                if spells[i].value >= p.hp: return i
+                if spells[i].value >= p.hp: rt = i; break
             elif spells[i].type == 'heal': 
-                if p.hp >= p.hp/3: return 9  # skip round
-                if p.hp <= p.hp/4: return i
-            else: 
-                if m.hp <= m.hp/5: return 8
-                return random.randint(0, len(spells)-1)
-
+                if p.hp >= p.hp/3: rt = 9; break  # skip round
+                if p.hp <= p.hp/4: rt = i; break;
+    if rt == -1: rt = random.randint(0, len(spells)-1)
+    return rt;
 
 def getNormalAi(p, m):
     # get entity spells
     spells = []
+    rt = -1
     for i in range(len(m.inventory)): 
         spells.append(m.inventory[i])
-    
-    for i in range(len(spells)):
-        if spells[i].cost > m.mana : return 9 # skip round 
+
+    i = -1
+    while True:
+        i += 1
+        if i >= len(spells): break; 
+        if spells[i].cost > m.mana : rt = 9; break; # skip round 
         else: 
             if spells[i].type == 'damage' or 'curse':
-                if spells[i].value >= p.hp: return i
-                if spells[i].value >= p.hp/2 : return i 
-                if spells[i].value < p.hp/2: return i 
+                if spells[i].value >= p.hp : rt = i; break
+                elif spells[i].value >= p.hp/2 : rt = i; break
+                elif spells[i].value >= p.hp/6 : rt = i; break
             elif spells[i].type == 'heal': 
-                if p.hp >= p.hp/3: return 9  # skip round
-                if p.hp <= p.hp/4: return i
-            else: 
-                return random.randint(0, len(spells)-1)
+                if p.hp >= p.hp/3 : rt = 9; break;  # skip round
+                if p.hp <= p.hp/4 : rt = i; break;
 
-
-
+    if rt == -1: rt = random.randint(0, len(spells)-1)
+    return rt;
 
 def enemyRound(player, me): # PREBUILD "AI" FOR SILVER MONSTER, DEPRECATED
     while True:
