@@ -70,7 +70,6 @@ def getEnemyRound(p, e):
     elif a == 9: return;
     else: 
         castspell(e, p, e.inventory[a])
-        e.mana -= e.inventory[a].cost
 
 def castspell(player, enemy, spell): 
     print('\n')
