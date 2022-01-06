@@ -16,7 +16,7 @@ To open UI Test, install requirements using ```python3 -m pip install -r require
 From now on development of simplerpg-stable/unstable will be paused.   
 It will be only continued on ```uitest``` branch, the only updates that ```stable``` will recieve, are small patches for bugs, that would lead to game crashing / softlocking / beeing unplayable.  
 This state also applies to modloader, and will be removed upon uitest beeing stable.   
-**This also marks a new era for the game. It will be relying on ```pygame``` and ```pygame_ui```! Thank you for reading.**  
+**This also marks a new era for the game, as it will be relying on ```pygame``` and ```pygame_ui```! Thank you for reading, the rest is optional.**  
 
 Auto Installer for packages is **already done in stable launcher** and will be enabled in the future on stable branch.  
 If you wish to enable it earlier, here are the instructions:
