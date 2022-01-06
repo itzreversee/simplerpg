@@ -64,7 +64,6 @@ def getEnemyRound(p, e):
         a = getEasyAi(p, e)
     if e.location == 1: 
         a = getNormalAi(p, e)
-    print(" [debug] getEnemyRound, a = " + str(a)); input()
     if a == 8: 
         z = flee(e, 69); 
         if z == 2: return 3
