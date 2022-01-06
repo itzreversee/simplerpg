@@ -54,25 +54,35 @@ class CurseSpell():
     value = 8
     duration = 3 # rounds, 2 = this and next
 
-class DirtSpell(): 
-    hardid = "DirtSpell"
+class GravelSpell():
+    hardid = "GravelSpell"
     id = 7
     
+    name = "Gravel Spell"
+    cost = 6
+
+    type = "damage"
+    value = 3
+    duration = 1
+
+class DirtSpell():
+    hardid = "DirtSpell"
+    id = 8
+    
     name = "Dirt Spell"
-    cost = 5
+    cost = 4
 
     type = "damage"
     value = 2
     duration = 1
 
-
 class StoneSpell(): 
     hardid = "StoneSpell"
-    id = 8
+    id = 9
     
     name = "Stone Spell"
     cost = 10
 
     type = "damage"
-    value = 6
+    value = 8
     duration = 1
