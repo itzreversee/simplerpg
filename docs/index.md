@@ -15,7 +15,7 @@
 <li>Ai & World Update ( v2.2a ) - January 6, 2022 <strong>- > <a href="https://github.com/reversee-dev/simplerpg/releases/tag/2.2a-stable">download</a> (latest) </strong></li>
 <li>Quick Fixes ( v2.1a ) - January 5, 2022 <strong>-  <a href="https://github.com/reversee-dev/simplerpg/releases/tag/2.1a-stable">download</a></strong></li>
 <li>Village Core ( v2a ) - December 14, 2021 <strong>- &gt; <a href="https://github.com/reversee-dev/simplerpg/releases/tag/2a-stable">download</a></strong></li>
-<li>Battle Engine ( v1.4a-unstable ) - November 21, 2021 <strong>- &gt; <a href="https://github.com/reversee-dev/simplerpg/releases/tag/1.4a-unstable">download</strong></a>
+<li>Battle Engine ( v1.4a-unstable ) - November 21, 2021 <strong>- &gt; <a href="https://github.com/reversee-dev/simplerpg/releases/tag/1.4a-unstable">download</a></strong>
 
     
 <h2>NOTE ABOUT FUTURE</h2>
