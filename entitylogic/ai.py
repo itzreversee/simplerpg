@@ -37,7 +37,8 @@ def getNormalAi(p, m):
     while True:
         i += 1
         if i >= len(spells): break; 
-        if spells[i].cost > m.mana : rt = 9; break; # skip round 
+        if spells[i].cost >= m.mana                 : rt = 9; break; # skip round 
+        if spells[i].cost+spells[i].cost/2 >= m.mana: rt = 9; break; 
         else: 
             if spells[i].type == 'damage' or 'curse':
                 if spells[i].value >= p.hp : rt = i; break
