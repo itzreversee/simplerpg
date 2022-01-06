@@ -12,6 +12,15 @@ time.sleep(0.5)
 
 def game():
     player = smanager.load("s0.pkl")
-    battle(player, villageEnemy.goldmonster)
+    battleresult = battle(player, dungeonEnemy.stonemonster)
+    if battleresult == 0:
+        print("you lost")
+    elif battleresult == 1:
+        print("you won")
+    elif battleresult == 2:
+        print("you fleed")
+    elif battleresult == 3:
+        print("your enemy fleed")        
+
     
 game()
