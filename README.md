@@ -16,7 +16,7 @@ To Mod stuff, check out [modloader](https://github.com/reversee-dev/srpg-modload
 You can also create your own mods! ~~The wiki will soon be updated!~~ wiki will not be updated anymore. check out [this](https://reversee-dev.github.io/simplerpg/) (under construction)
 
 ### Versions
- * Placeholder ( v2.2a ) - January 6, 2022 **- > No release yes**
+ * Ai & World Update ( v2.2a ) - January 6, 2022 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/2.2a-stable) (latest)**
  * Quick Fixes ( v2.1a ) - January 5, 2022 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/2.1a-stable)**
  * Village Core ( v2a ) - December 14, 2021 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/2a-stable)**
  * Battle Engine ( v1.4a-unstable ) - November 21, 2021 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/1.4a-unstable)**
