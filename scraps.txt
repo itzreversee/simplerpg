@@ -1,0 +1,10 @@
+fill screen with image
+    x = 0; y = 0
+    for _ in range(12):
+        if x >= 60:
+            x = 0
+            y += 60
+        for _ in range(20, -1, -1):
+            x += 60
+            screen.blit(assets.dirt, ( x-60, y, 64, 64 ) )
+
