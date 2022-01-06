@@ -20,7 +20,7 @@
     
   <h2> NOTE ABOUT FUTURE </h2>
   <p>From now on development of simplerpg-stable/unstable will be paused.</p>
-  <p> It will be only continued on <code>uitest</code> branch, the only updates that <code>stable</code> will recieve will be small patches, that would lead to game crashing / softlocking / beeing unplayable.</br></p>
+  <p> It will be only continued on <code>uitest</code> branch, the only updates that <code>stable</code> will recieve are small patches for bugs, that would lead to game crashing / softlocking / beeing unplayable.</br></p>
 <p>This state also applies to modloader, and will be removed upon uitest beeing stable.</p>
 <p><strong>This also marks a new era for the game. It will be relying on <code>pygame</code> and <code>pygame_ui</code> Thank you for reading.</strong></br></p></br>
 
