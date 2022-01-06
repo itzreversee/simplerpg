@@ -13,7 +13,8 @@ def getEasyAi(p, m):
         i += 1
         if i >= len(spells): break; 
         
-        if spells[i].cost > m.mana : rt = 9; break; # skip round 
+        if spells[i].cost > m.mana                  : rt = 9; break; # skip round 
+        if spells[i].cost+spells[i].cost/2 >= m.mana: rt = 9; break; 
         elif m.hp < m.hp/8:
             x = random.randint(0, 2)
             if x == 1: return 8; break;
