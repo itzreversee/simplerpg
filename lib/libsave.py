@@ -1,10 +1,10 @@
-from lib.libentity import player, basePlayer
+from lib.libentity import player, baseEntity
 import pickle
 
 class smanager():
     def save(savefile, p):
         with open(savefile, 'wb') as s:
-            pickle.dump(basePlayer(p.name, p.location, p.hp, p.maxhp, p.basemaxhp, p.basehpregen, p.hpregen, p.mana, p.maxmana, p.manaregen, p.basemana, p.basemanaregen, p.maxitems, p.inventory, p.items, p.gold, p.exp, p.level, p.nextlevel, p.isEnemy, p.curseLeft, p.curseId), s, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(baseEntity(p.name, p.location, p.hp, p.maxhp, p.basemaxhp, p.basehpregen, p.hpregen, p.mana, p.maxmana, p.manaregen, p.basemana, p.basemanaregen, p.maxitems, p.inventory, p.items, p.gold, p.exp, p.level, p.nextlevel, p.isEnemy, p.curseLeft, p.curseId), s, pickle.HIGHEST_PROTOCOL)
             pickle.dump(p.location, s, pickle.HIGHEST_PROTOCOL)
             pickle.dump(p.hp, s, pickle.HIGHEST_PROTOCOL)
             pickle.dump(p.maxhp, s, pickle.HIGHEST_PROTOCOL)

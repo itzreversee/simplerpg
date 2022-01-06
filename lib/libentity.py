@@ -50,7 +50,7 @@ class player():
     curseLeft = None
     curseId = None
 
-class basePlayer(object):
+class baseEntity(object):
     def __init__(self,name,location,hp,maxhp,basemaxhp,basehpregen,hpregen,mana,maxmana,manaregen,basemana,basemanaregen,maxitems,inventory,items,gold,exp,level,nextlevel,isEnemy,curseLeft,curseId):
         self.name = name
         self.location = location
@@ -74,34 +74,6 @@ class basePlayer(object):
         self.isEnemy = isEnemy
         self.curseLeft = curseLeft
         self.curseId = curseId
-    
-    name = "Maciek"
-    location = 0
-
-    hp = 100
-    maxhp = 100
-    basemaxhp = 100
-    basehpregen = 1
-    hpregen = 1
-
-    mana = 225
-    maxmana = 2255
-    manaregen = 8
-    basemana = 200
-    basemanaregen = 3
-
-    maxitems = 3
-    inventory = [FireSpell, CurseSpell, HealSpell]
-    items = [manaBag, manaBag, healthNecklace]
-    
-    gold = 250
-    exp = 2137
-    level = 1
-    nextlevel = 100
-
-    isEnemy = False
-    curseLeft = 0
-    curseId = 6
 
 
 class silvermonster():

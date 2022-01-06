@@ -11,7 +11,7 @@ clearConsole()
 print("simpleRPG. version: "+ game.version +' '+game.isStable() +" (runtime : "+sys.argv[0]+" )")
 time.sleep(1.5)
 
-maciek = basePlayer(
+maciek = baseEntity(
     'Maciek', 0, # name, location
     100, 100, 100, 1, 1, # hp, maxhp, basemaxhp, basehpregen, hpregen
     200, 200, 8, 200, 3, # mana, maxmana, manaregen, basemana, basemanaregen
