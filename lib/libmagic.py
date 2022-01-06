@@ -53,3 +53,26 @@ class CurseSpell():
     type = "curse"
     value = 8
     duration = 3 # rounds, 2 = this and next
+
+class DirtSpell(): 
+    hardid = "DirtSpell"
+    id = 7
+    
+    name = "Dirt Spell"
+    cost = 5
+
+    type = "damage"
+    value = 2
+    duration = 1
+
+
+class StoneSpell(): 
+    hardid = "StoneSpell"
+    id = 8
+    
+    name = "Stone Spell"
+    cost = 10
+
+    type = "damage"
+    value = 6
+    duration = 1
