@@ -1,7 +1,7 @@
 
 from lib.libsave import *
 from lib.libbattle import *
-from lib.libentity import silvermonster
+from lib.libentity import *
 from lib.randomthings import *
 import time, sys
 
@@ -12,6 +12,6 @@ time.sleep(0.5)
 
 def game():
     player = smanager.load("s0.pkl")
-    battle(player, silvermonster)
+    battle(player, villageEnemy.goldmonster)
     
 game()

@@ -5,7 +5,7 @@ from lib.libmagic import *
 from assets.items import *
 from lib.randomthings import *
 from lib.libinput import getUserInput
-from entitylogic.silvermonster import entityLogic, enemyRound
+from entitylogic.ai import  getEasyAi, getNormalAi
 
 global isBattleGoing
 global battletype
@@ -50,8 +50,15 @@ def battle(p, e):
 
         
 def getEnemyRound(p, e):
-    pb, eb, sb = enemyRound(p, e)
-    castspell(pb, eb, sb)
+    if e.location == 0: 
+        a = getEasyAi(p, e)
+    if e.location == 1: 
+        a = getNormalAi(p, e)
+
+    if a == 8: flee(e, 69)
+    elif a == 9: return;
+    else: 
+        castspell(e, p, a)
 
 def castspell(player, enemy, selection):
     print('\n')
@@ -108,18 +115,22 @@ def ambient(p):
         p.curseLeft = p.curseLeft - 1
 
 def flee(p, rounds):
-    chance = random.randint(0, (20 - rounds))
+    if not rounds >= 20:
+         chance = random.randint(0, (35 - rounds))
+    else: chance = random.randint(0, 10)
     print("\n " + p.name+ " is trying to flee!")
     if (chance) == 0:
         time.sleep(3)
         print(" ... ")
         time.sleep(1)
         print(" " + p.name + " fleed!")
-        return False;
+        if p.isEnemy == True:
+            exit();
+        else: return False;
     time.sleep(1.5)
     return True
 
-def quickCheck(p, e):
+def quickCheck(p, e): # will be deprecated when battle will integrate with village
     if (p.hp) <= 0:
         print("You Died!")
         exit()
