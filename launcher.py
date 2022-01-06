@@ -50,12 +50,26 @@ while True:
     time.sleep(0.2);
     print("\nSelect game preset: ") # presets
     print(" q - Village ")
-    print(" w - Battle (progress is not saved) ")
+    print(" w - Battle Scenarios (progress is not saved for now) ")
     (menuinput) = getUserInput()
     if (menuinput) == 0: 
         from village import *
         game()
     if (menuinput) == 1: 
-        from battletest import *
-        game()
-    
+        while True: 
+            clearConsole()
+            print("\nSelect battle scenario: ")
+            print(" q - Silver Monster ")
+            print(" w - Golden Monster ")
+            print(" e - Stone Monster ")
+            (menuinput) = getUserInput()
+            if (menuinput) == 0: 
+                from scenarios.silvermonster import *
+                game()
+            if (menuinput) == 1: 
+                from scenarios.goldmonster import *
+                game()
+            if (menuinput) == 2: 
+                from scenarios.stonemonster import *
+                game()
+
