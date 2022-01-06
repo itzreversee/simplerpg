@@ -5,13 +5,13 @@ from lib.libmagic import *
 from assets.items import *
 from lib.randomthings import *
 from lib.libinput import getUserInput
-from entitylogic.silvermonster import entityLogic, enemyRound
+from entitylogic.ai import  getEasyAi, getNormalAi
 
 global isBattleGoing
 global battletype
 global rounds
 
-battletype = 0 # normal battle
+battletype = 0 # normal battle, 1 = bossfight
 
 def battle(p, e):
     cmenu = 'battle'
@@ -23,74 +23,86 @@ def battle(p, e):
 
         time.sleep(0.5)
 
-        quickCheck(p, e)
+        if p.hp <= 0: return 0;
+        if e.hp <= 0: return 1;
 
         ambient(p)
         ambient(e)
-
+        
         while True: #menu loop
             clearConsole()
             drawBasicBattleMenu(p, e, rounds)
             if (cmenu) == 'battle':
                 drawBattleMenu()
                 (menuinput) = getUserInput()
-                if (menuinput) == 0: isBattleGoing = flee(p, rounds); break;
+                if (menuinput) == 0: 
+                    z = flee(p, rounds);
+                    if z == 0:
+                        break;
+                    elif z == 1:
+                        return 2;
+                    elif z == 2:
+                        return 3;
                 if (menuinput) == 1: cmenu = drawSpellMenu(p)
                 if (menuinput) == 2: cmenu = 'battle'; break;
             if (cmenu) == 'spell':
                 time.sleep(0.5)
                 (menuinput) = getUserInput()
-                if (menuinput) != 4: 
-                    cmenu = castspell(p, e, menuinput); break;
+                if (menuinput) != 4 and (menuinput) != 5 and (menuinput) != 6: 
+                    cmenu = castspell(p, e, p.inventory[menuinput]); break;
             cmenu = 'battle';   
 
         if (isBattleGoing) == False: break;
 
-        getEnemyRound(p ,e)
+        ger = getEnemyRound(p ,e)
+        if ger == 3: return 3;
 
+    return;
         
 def getEnemyRound(p, e):
-    pb, eb, sb = enemyRound(p, e)
-    castspell(pb, eb, sb)
+    if e.location == 0: 
+        a = getEasyAi(p, e)
+    if e.location == 1: 
+        a = getNormalAi(p, e)
+    if a == 8: 
+        z = flee(e, 69); 
+        if z == 2: return 3
+    elif a == 9: return;
+    else: 
+        castspell(e, p, e.inventory[a])
 
-def castspell(player, enemy, selection):
+def castspell(player, enemy, spell): 
     print('\n')
-    
-    class spell():
-        type = eval(player.inventory[selection].hardid).type
-        value = eval(player.inventory[selection].hardid).value
-        cost = eval(player.inventory[selection].hardid).cost
-        duration = eval(player.inventory[selection].hardid).duration
 
-    if (eval(player.inventory[selection].hardid).cost) > player.mana: 
+    if (spell.cost) > player.mana: 
         if (player.isEnemy) == False: print(" You don't have enough mana!"); 
         return('battle');
 
     else:
 
-        if (eval(player.inventory[selection].hardid).type) == 'damage':
+        if (spell.type) == 'damage':
             enemy.hp = round(enemy.hp - spell.value, 2) 
             player.mana = player.mana - spell.cost
 
-            print(" " + player.name + " casted " + eval(player.inventory[selection].hardid).name + "!")
-            time.sleep(1.5)
+            print(" " + player.name + " casted " + spell.name + "!")
+            time.sleep(1)
 
-        if (eval(player.inventory[selection].hardid).type) == 'curse':
+        if (spell.type) == 'curse':
             enemy.hp = round(enemy.hp - (spell.value - 5) ,2) 
             enemy.curseLeft = spell.duration
-            enemy.curse = selection
             player.mana = player.mana - spell.cost
+            
 
-            print(" " + player.name + " casted " + eval(player.inventory[selection].hardid).name + "!")
-            time.sleep(1.5)
+            print(" " + player.name + " casted " + spell.name + "!")
+            time.sleep(1)
 
 
-        if (eval(player.inventory[selection].hardid).type) == 'heal':
+        if (spell.type) == 'heal':
             player.hp = player.hp + spell.value
             player.mana = player.mana - spell.cost
 
-            print(" " + player.name + " used " + eval(player.inventory[selection].hardid).name + "!")
-            time.sleep(1.5)
+            print(" " + player.name + " used " + spell.name + "!")
+            time.sleep(1)
 
         return('battle');
 
@@ -108,21 +120,17 @@ def ambient(p):
         p.curseLeft = p.curseLeft - 1
 
 def flee(p, rounds):
-    chance = random.randint(0, (20 - rounds))
+    if not rounds >= 20:
+         chance = random.randint(0, (35 - rounds))
+    else: chance = random.randint(0, 10)
     print("\n " + p.name+ " is trying to flee!")
     if (chance) == 0:
         time.sleep(3)
         print(" ... ")
         time.sleep(1)
         print(" " + p.name + " fleed!")
-        return False;
+        if p.isEnemy == True:
+            return 3;
+        else: return 1;
     time.sleep(1.5)
-    return True
-
-def quickCheck(p, e):
-    if (p.hp) <= 0:
-        print("You Died!")
-        exit()
-    if (e.hp) <= 0:
-        print("You Won!")
-        exit()
+    return 0;

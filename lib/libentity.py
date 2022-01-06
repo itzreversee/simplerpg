@@ -50,7 +50,7 @@ class player():
     curseLeft = None
     curseId = None
 
-class basePlayer(object):
+class baseEntity(object):
     def __init__(self,name,location,hp,maxhp,basemaxhp,basehpregen,hpregen,mana,maxmana,manaregen,basemana,basemanaregen,maxitems,inventory,items,gold,exp,level,nextlevel,isEnemy,curseLeft,curseId):
         self.name = name
         self.location = location
@@ -74,49 +74,29 @@ class basePlayer(object):
         self.isEnemy = isEnemy
         self.curseLeft = curseLeft
         self.curseId = curseId
+
+class villageEnemy():
+    silvermonster = baseEntity(
+    'Silver Monster', 0, # name, location
+    80, 80, 80, 2, 2, # hp, maxhp, basemaxhp, basehpregen, hpregen
+    150, 250, 20, 250, 20, # mana, maxmana, manaregen, basemana, basemanaregen
+    3, [IceSpell, AirSpell], [], # maxitems, inventory, items
+    0, 0, 1, 100, # gold, exp, level, nextlevel
+    True, 0, 6) # isEnemy, curseLeft, curseId
     
-    name = "Maciek"
-    location = 0
+    goldmonster = baseEntity(
+    'Golden Monster', 0, # name, location
+    120, 120, 120, 1, 1, # hp, maxhp, basemaxhp, basehpregen, hpregen
+    120, 120, 4, 120, 4, # mana, maxmana, manaregen, basemana, basemanaregen
+    3, [FireSpell, AirSpell, HealSpell], [], # maxitems, inventory, items
+    0, 0, 1, 100, # gold, exp, level, nextlevel
+    True, 0, 6) # isEnemy, curseLeft, curseId
 
-    hp = 100
-    maxhp = 100
-    basemaxhp = 100
-    basehpregen = 1
-    hpregen = 1
-
-    mana = 225
-    maxmana = 2255
-    manaregen = 8
-    basemana = 200
-    basemanaregen = 3
-
-    maxitems = 3
-    inventory = [FireSpell, CurseSpell, HealSpell]
-    items = [manaBag, manaBag, healthNecklace]
-    
-    gold = 250
-    exp = 2137
-    level = 1
-    nextlevel = 100
-
-    isEnemy = False
-    curseLeft = 0
-    curseId = 6
-
-
-class silvermonster():
-    name = "Silver Monster"
-    id = 1
-
-    hp = 80
-    maxhp = 85
-    hpregen = 2
-
-    mana = 150
-    maxmana = 250
-    manaregen = 20
-
-    inventory = [IceSpell, AirSpell, HealSpell]
-    isEnemy = True
-    curseLeft = 0
-    curseId = 6
+class dungeonEnemy():
+    stonemonster = baseEntity(
+    'Stone Monster', 1, # name, location
+    60, 60, 60, 0, 0, # hp, maxhp, basemaxhp, basehpregen, hpregen
+    80, 80, 10, 80, 10, # mana, maxmana, manaregen, basemana, basemanaregen
+    3, [StoneSpell, DirtSpell], [], # maxitems, inventory, items
+    0, 0, 1, 100, # gold, exp, level, nextlevel
+    True, 0, 6) # isEnemy, curseLeft, curseId

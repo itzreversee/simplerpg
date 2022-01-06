@@ -11,14 +11,22 @@ import time, random
 def world(save, s):
     global seed;
     global ssave;
+    global shopstock;
     ssave = save;
-    seed = s
     p = smanager.load(save)
+    seed = smanager.load("s0_seed.pkl")
+    shopstock = smanager.load("s0_sstock.pkl")
     while True:
         reload(save, p)
         if (p).location == 0: smallVillage(p);
-def reload(save, p):
-    smanager.save(save, checkStats(p)); p = smanager.load(save)
+
+def reload(save, p): smanager.save(save, checkStats(p)); p = smanager.load(save); worldReload();
+
+def worldReload():
+    global seed; global shopstock;
+    smanager.world.save(seed, shopstock)
+    seed = smanager.load("s0_seed.pkl")
+    shopstock = smanager.load("s0_sstock.pkl")
 
 def smallVillage(p):
     cmenu = 'village'
@@ -97,8 +105,10 @@ def innEvent(p, type):
     # WAIT FOR PLAYER
     print("\nPress any key to continue...");  time.sleep(0.75); getch()  
 
-    global ssave; reload(ssave, p)
+    global ssave; reload(ssave, p) # reload
     global seed; seed += 200 # FOR EVERY SLEEP CHANGE SEED!
+    getShopStock(3, True); # FORCE REGEN SHOP STOCK
+    worldReload() # SAVE WORLD DATA
     cmenu = 'village'; return;
 
 def shop(p): # SHOP DISPLAY FUNCTION
@@ -128,21 +138,23 @@ def buy(p, item): # BUY MENU
         if len(p.items) >= p.maxitems: print("You can't buy more than " + str(p.maxitems) + " items"); time.sleep(3); return;
         if (item.cost > p.gold): print("You don't have enough gold"); time.sleep(3); return;
         p.gold -= item.cost; p.items.append(item);
-        print("You bought " + item.inGameName + "!"); reload(ssave, p);
-        print("You bought " + item.inGameName + "!"); reload(ssave, p);
+        print("You bought " + item.inGameName + "!"); reload(ssave, p); 
     
     # WAIT FOR PLAYER
     print("\nPress any key to continue...");  time.sleep(0.75); getch()  
 
 
-def getShopStock(count): # GET SHOP STOCK
+def getShopStock(count, force = False): # GET SHOP STOCK
     global seed;
+    global shopstock;
     
     tseed = seed
-    itempool = [manaBag, healthNecklace]
-    items = []
-    for _ in range(count):
-        tseed *= 16
-        random.seed(tseed); 
-        items.append(itempool[random.randint(0,len(itempool) -1)])
-    return(items)
+    itempool = [manaBag, healthNecklace] 
+    if shopstock == [] or force == True:
+        shopstock = []
+        for _ in range(count):
+            tseed *= 16
+            random.seed(tseed); 
+            shopstock.append(itempool[random.randint(0,len(itempool) -1)])
+    worldReload()
+    return(shopstock)
