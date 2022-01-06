@@ -138,7 +138,6 @@ def buy(p, item): # BUY MENU
         if len(p.items) >= p.maxitems: print("You can't buy more than " + str(p.maxitems) + " items"); time.sleep(3); return;
         if (item.cost > p.gold): print("You don't have enough gold"); time.sleep(3); return;
         p.gold -= item.cost; p.items.append(item);
-        print("You bought " + item.inGameName + "!"); reload(ssave, p);
         print("You bought " + item.inGameName + "!"); reload(ssave, p); 
     
     # WAIT FOR PLAYER
