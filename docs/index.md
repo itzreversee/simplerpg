@@ -15,17 +15,17 @@
 <li>Ai & World Update ( v2.2a ) - January 6, 2022 <strong>- > <a href="https://github.com/reversee-dev/simplerpg/releases/tag/2.2a-stable">download</a> (latest) </strong></li>
 <li>Quick Fixes ( v2.1a ) - January 5, 2022 <strong>-  <a href="https://github.com/reversee-dev/simplerpg/releases/tag/2.1a-stable">download</a></strong></li>
 <li>Village Core ( v2a ) - December 14, 2021 <strong>- &gt; <a href="https://github.com/reversee-dev/simplerpg/releases/tag/2a-stable">download</a></strong></li>
-<li>Battle Engine ( v1.4a-unstable ) - November 21, 2021 <strong>- &gt; <a href="https://github.com/reversee-dev/simplerpg/releases/tag/1.4a-unstable">download</a>
+<li>Battle Engine ( v1.4a-unstable ) - November 21, 2021 <strong>- &gt; <a href="https://github.com/reversee-dev/simplerpg/releases/tag/1.4a-unstable">download</strong></a>
 
     
-  <h2> NOTE ABOUT FUTURE </h2>
-  <p>From now on development of simplerpg-stable/unstable will be paused.</p>
-  <p> It will be only continued on <code>uitest</code> branch, the only updates that <code>stable</code> will recieve are small patches for bugs, that would lead to game crashing / softlocking / beeing unplayable.</br></p>
+<h2>NOTE ABOUT FUTURE</h2>
+<p>From now on development of simplerpg-stable/unstable will be paused.</p>
+<p> It will be only continued on <code>uitest</code> branch, the only updates that <code>stable</code> will recieve are small patches for bugs, that would lead to game crashing / softlocking / beeing unplayable.</br></p>
 <p>This state also applies to modloader, and will be removed upon uitest beeing stable.</p>
-<p><strong>This also marks a new era for the game. It will be relying on <code>pygame</code> and <code>pygame_ui</code> Thank you for reading.</strong></br></p></br>
+<p><strong>This also marks a new era for the game, as it will be relying on <code>pygame</code> and <code>pygame_ui</code> Thank you for reading, rest is optional.</strong></br></p></br>
 
-<a>Auto Installer for packages is **already done in stable launcher** and will be enabled in the future on stable branch.  </br></a>
-<a>If you wish to enable it earlier, here are the instructions:</br></a>
+<p>Auto Installer for packages is **already done in stable launcher** and will be enabled in the future on stable branch.  </br></p>
+<p>If you wish to enable it earlier, here are the instructions:</br></p>
 <li>download latest stable build </li>
 <li>open <code>lib/randomthings.py</code> and set <code>game.enforceModules</code> to <code>True</code></li>
 <li>open <code>launcher.py</code> and set <code>modules</code> to <strong>list</strong> of modules. eg. <code>modules = [pygame, pygame_ui]</code></li>
