@@ -5,6 +5,7 @@
   <image src="https://img.shields.io/github/repo-size/reversee-dev/simplerpg?style=flat-plastic"/>
   <image src="https://img.shields.io/github/stars/reversee-dev/simplerpg?style=social"/>
   <image src="https://img.shields.io/badge/python-3.10-blueviolet?style=flat-plastic"/>
+<<<<<<< HEAD
   <image src="https://img.shields.io/badge/unstable-ff6ba2?style=flat-plastic"/>
 </p>
 
