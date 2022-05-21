@@ -1,7 +1,8 @@
+from ast import parse
 from lib.libsave import *
 from lib.libinput import *
 from lib.randomthings import *
-import time, sys
+import time, sys, os
 
 clearConsole()
 
@@ -42,34 +43,75 @@ if game.enforceModules == True:
             print("See ya!")
             input(); exit()
 
-while True: 
-    clearConsole()
+def settings():
+    while True:
+        print("\nSettings:")
+        print(" - 1 - Delete save file")
+        print(" - 2 - Launch test room")
+        print(" - q - Exit")
+        a = getch()
+        if a == "q": break;
+        if a == "1":
+            os.remove('s0_seed.pkl')
+            os.remove('s0_sstock.pkl')
+            os.remove('s0.pkl')
+            print("\nSave file deleted!")
+            time.sleep(1)
+        if a == "2":
+            from lib.worldcore import fate
+            fate.helimantainosifarikanounpata()
+        if a == "f" and os.path.exists("fate"):
+            print("decide about your own life")
 
+def scanGameScenarios():
+    scenarios = []
+    f = None
+    path = 'scenarios/'
+    dirs = os.listdir(path)
+    for d in dirs:
+        files = os.listdir("scenarios/"+d+"/")
+        for f in files:
+            if f.endswith('.json'):
+                scenarios.append(f)
+    return scenarios
+
+def parseGameScenario(scenario):
+    import json
+    j = open("scenarios/"+scenario[:len(scenario) -4]+"/"+scenario)
+    data = json.load(j)
+    return data
+
+def loadGameScenario(scenario):
+    print(scenario)
+    sys.path.insert(1, 'scenarios/'+scenario[:len(scenario) - 4]+'/')
+    from scenario import a
+    a.game()
+
+while True: 
+    #clearConsole()
     if "climage" in sys.modules: print(climage.convert('assets/srpgmini.png', is_unicode=True))  # logo 
 
+    scenarios = scanGameScenarios()
+    print("\nPress i for settings")
+    print("Scenarios:")
+    for i in range(len(scenarios)):
+        name = parseGameScenario(scenarios[i])['name']
+        print(f"  {i+1}. {name}")
+
     time.sleep(0.2);
-    print("\nSelect game preset: ") # presets
-    print(" q - Village ")
-    print(" w - Battle Scenarios (progress is not saved for now) ")
-    (menuinput) = getUserInput()
-    if (menuinput) == 0: 
-        from village import *
-        game()
-    if (menuinput) == 1: 
-        while True: 
-            clearConsole()
-            print("\nSelect battle scenario: ")
-            print(" q - Silver Monster ")
-            print(" w - Golden Monster ")
-            print(" e - Stone Monster ")
-            (menuinput) = getUserInput()
-            if (menuinput) == 0: 
-                from scenarios.silvermonster import *
-                game()
-            if (menuinput) == 1: 
-                from scenarios.goldmonster import *
-                game()
-            if (menuinput) == 2: 
-                from scenarios.stonemonster import *
-                game()
+
+    (menuinput) = getch() # getch, so dynamic type
+    if (menuinput) == 4: continue
+    if (menuinput) == 'q': break
+    if (menuinput) == 'i': settings()
+    maxPick = len(scenarios)
+    #check if menuinput is int
+    try: menuinput = int(menuinput)
+    except ValueError: continue
+
+    if menuinput > maxPick or menuinput < 1: continue
+    else: 
+        loadGameScenario(scenarios[menuinput-1])
+        input("end")
+
 
