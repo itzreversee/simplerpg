@@ -115,17 +115,13 @@ while True:
 
     print("\nPress i for settings")
     
-    if not enablePages: # NO PAGES
-        print("Scenarios:")
-        for i in range(len(scenarios)):
-            name = parseGameScenario(scenarios[i])['name']
-            print(f"  {i+1}. {name}")
-    else: # PAGES
-        print("Scenarios:")
-        spp = pager.getPage(scenarios, page_id)
-        for i in range(len(spp)):
-            name = parseGameScenario(spp[i])['name']
-            print(f"  {i+1}. {name}")
+    spp = pager.getPage(scenarios, page_id)
+    print("Scenarios:")
+    
+    for i in range(len(spp)):
+        name = parseGameScenario(spp[i])['name']
+        print(f"  {i+1}. {name}")
+    if enablePages: # IF ENABLED PAGES
         print(f"\nPage {page_id+1}/{page_ids+1}")
         print("Use w/e to change pages.")
 
