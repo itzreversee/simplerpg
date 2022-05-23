@@ -55,7 +55,7 @@ def settings():
             os.remove('s0_sstock.pkl')
             os.remove('s0.pkl')
             print("\nSave file deleted!")
-            time.sleep(1)
+            exit()
         if a == "2":
             from lib.worldcore import fate
             fate.helimantainosifarikanounpata()
