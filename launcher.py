@@ -131,12 +131,13 @@ while True:
     if (menuinput) == 4: continue
     if (menuinput) == 'q': break
     if (menuinput) == 'i': settings()
-    if (menuinput) == 'w':
-            if not page_ids > page_id: 
-                page_id -= 1
-    if (menuinput) == 'e':
-            if not page_ids <= page_id: 
-                page_id += 1
+    if enablePages:
+        if (menuinput) == 'w':
+                if not page_ids > page_id: 
+                    page_id -= 1
+        if (menuinput) == 'e':
+                if not page_ids <= page_id: 
+                    page_id += 1
 
     maxPick = len(scenarios)
     #check if menuinput is int
