@@ -27,6 +27,7 @@ def whatOS():
 class game():
     version = '2.3-1a'
     stable = False
+    debugPrints = False
     enforceModules = False
 
     def isStable():

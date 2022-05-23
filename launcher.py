@@ -13,9 +13,8 @@ if not (os.path.isfile("s0.pkl")) or not os.path.isfile("s0_seed.pkl") or not os
     from new_save import createDefaultSaveFile
     createDefaultSaveFile()
 
-print("\nLoading default save file: \"s0.pkl\"")
+if game.debugPrints: print("\nLoading default save file: \"s0.pkl\"")
 player = smanager.load("s0.pkl")
-time.sleep(0.2); 
 
 if game.enforceModules == True:
     import importlib.util
@@ -30,10 +29,9 @@ if game.enforceModules == True:
         print("Hey! In order to play srpg, you need these modules!")
         for m in modules:
             print(" - "+m)
-        time.sleep(0.1); print("Do you want to install it now? (q/*)")
+        print("Do you want to install it now? (q/*)")
         a = getUserInput();
         if a == 0: 
-            time.sleep(0.3)
             for m in modules:
                 install(m)
             print("\nDone! Restart the game!")
@@ -81,7 +79,7 @@ def parseGameScenario(scenario):
     return data
 
 def loadGameScenario(scenario):
-    print(scenario)
+    if game.debugPrints: print("\nLoading scenario: "+scenario)
     sys.path.insert(1, 'scenarios/'+scenario[:len(scenario) - 4]+'/')
     from scenario import a
     a.game()
@@ -125,8 +123,6 @@ while True:
         print(f"\nPage {page_id+1}/{page_ids+1}")
         print("Use w/e to change pages.")
 
-    time.sleep(0.2);
-
     (menuinput) = getch() # getch, so dynamic type
     if (menuinput) == 4: continue
     if (menuinput) == 'q': break
@@ -147,6 +143,6 @@ while True:
     if menuinput > maxPick or menuinput < 1: continue
     else: 
         loadGameScenario(spp[menuinput-1])
-        input("end")
+        input()
 
 
