@@ -118,7 +118,7 @@ while True:
     if not enablePages: # NO PAGES
         print("Scenarios:")
         for i in range(len(scenarios)):
-            name = parseGameScenario(spp[i])['name']
+            name = parseGameScenario(scenarios[i])['name']
             print(f"  {i+1}. {name}")
     else: # PAGES
         print("Scenarios:")
