@@ -18,27 +18,26 @@ player = smanager.load("s0.pkl")
 time.sleep(0.2); 
 
 if game.enforceModules == True:
-
+    import importlib.util
     modules = ['climage'] # modules required 
     nomod = False 
 
-    try: # check for modules
-        import climage
-        # from playsound import playsound 
-    except ModuleNotFoundError:
-        nomod = True
+    for m in modules:
+        if (importlib.util.find_spec(m) == None):
+            nomod = True
 
     if nomod: # install if not found
-        print("Hey! In order to play srpg, you need these things!")
-        print(f" - {modules[0]}")
-        # print(f" - {modules[1]}")
+        print("Hey! In order to play srpg, you need these modules!")
+        for m in modules:
+            print(" - "+m)
         time.sleep(0.1); print("Do you want to install it now? (q/*)")
         a = getUserInput();
         if a == 0: 
             time.sleep(0.3)
-            install(modules[0])
-            install(modules[1])
-            getUserInput()
+            for m in modules:
+                install(m)
+            print("\nDone! Restart the game!")
+            exit();
         else: 
             print("See ya!")
             input(); exit()
