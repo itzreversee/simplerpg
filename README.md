@@ -10,10 +10,17 @@
 </p>
 
 ### Version v2.2a | Stable
-To open the launcher, run ```python3 launcher.py``` in your terminal!
-  
+To open the launcher, run ```python3 launcher.py``` in your terminal!  
+
 To Mod stuff, check out [modloader](https://github.com/reversee-dev/srpg-modloader), and [modrepo](https://github.com/reversee-dev/srpg-modrepo)!  
 You can also create your own mods! ~~The wiki will soon be updated!~~ wiki will not be updated anymore. check out [this](https://reversee-dev.github.io/simplerpg/) (under construction)
+
+### Quick Instruction
+ * q, w, e - action 1, 2 ,3 
+ * r - Action 4 ( often back / exit )
+ * t, y - other actions that aren't currently implemented / will be implemented in mods or future updates
+ * capital Z or X will exit game if not using getch() as input
+ * When HP is 0, you lose.
 
 ## NOTE ABOUT FUTURE
 don't read crossed text... i'm to lazy to write ui for this game :)  
