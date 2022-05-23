@@ -86,16 +86,48 @@ def loadGameScenario(scenario):
     from scenario import a
     a.game()
 
+class pager:
+    def getPage(scenarios, page):
+        # put 9 scenarios per page 
+        # and return list of scenarios in page
+        page +=1
+        if page == 1:
+            spp = scenarios[:9]
+        else:
+            spp = scenarios[(page-1)*9:page*9]
+        return spp
+
+
+# pages variable
+enablePages = None
+page_id = 0
+page_ids = 0
+
 while True: 
-    #clearConsole()
+    clearConsole()
     if "climage" in sys.modules: print(climage.convert('assets/srpgmini.png', is_unicode=True))  # logo 
 
-    scenarios = scanGameScenarios()
+    scenarios = scanGameScenarios() # scan scenarios
+    if len(scenarios) > 9:
+        enablePages = True
+        # get total pages
+        page_ids = len(scenarios) // 9
+
     print("\nPress i for settings")
-    print("Scenarios:")
-    for i in range(len(scenarios)):
-        name = parseGameScenario(scenarios[i])['name']
-        print(f"  {i+1}. {name}")
+    
+    if not enablePages: # NO PAGES
+        print("Scenarios:")
+        for i in range(len(scenarios)):
+            name = parseGameScenario(spp[i])['name']
+            print(f"  {i+1}. {name}")
+    else: # PAGES
+        print("Scenarios:")
+        spp = pager.getPage(scenarios, page_id)
+        for i in range(len(spp)):
+            name = parseGameScenario(spp[i])['name']
+            print(f"  {i+1}. {name}")
+        print(f"\nPage {page_id+1}/{page_ids+1}")
+        print("Use w/e to change pages.")
 
     time.sleep(0.2);
 
@@ -103,6 +135,13 @@ while True:
     if (menuinput) == 4: continue
     if (menuinput) == 'q': break
     if (menuinput) == 'i': settings()
+    if (menuinput) == 'w':
+            if not page_ids > page_id: 
+                page_id -= 1
+    if (menuinput) == 'e':
+            if not page_ids <= page_id: 
+                page_id += 1
+
     maxPick = len(scenarios)
     #check if menuinput is int
     try: menuinput = int(menuinput)
@@ -110,7 +149,7 @@ while True:
 
     if menuinput > maxPick or menuinput < 1: continue
     else: 
-        loadGameScenario(scenarios[menuinput-1])
+        loadGameScenario(spp[menuinput-1])
         input("end")
 
 
