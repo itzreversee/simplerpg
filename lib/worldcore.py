@@ -158,3 +158,18 @@ def getShopStock(count, force = False): # GET SHOP STOCK
             shopstock.append(itempool[random.randint(0,len(itempool) -1)])
     worldReload()
     return(shopstock)
+
+class fate:
+    def helimantainosifarikanounpata():
+        import os, time
+        print("fate deleted :D")
+        time.sleep(1)
+        print('Traceback (most recent call last):')
+        time.sleep(0.5)
+        for _ in range(50):
+            time.sleep(0.05)
+            print(' File '+ os.path.abspath(__file__) + ', line '+ str(666) + ', in <module>',)
+        print("fate decided :DDDDD")
+        from pathlib import Path
+        Path('fate').touch()
+        exit()
