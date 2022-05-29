@@ -1,4 +1,4 @@
-<p align="center"> <image src="srpg.svg" height=136/> <p/>
+<p align="center"> <image src="srpg_unstable.svg" height=136/> <p/>
 <p align="center"> a python game, made from scratch. </center>
 <p align="center">
   <image src="https://img.shields.io/github/last-commit/reversee-dev/simplerpg/stable?style=flat-plastic"/>
@@ -8,7 +8,7 @@
   <image src="https://img.shields.io/badge/unstable-ff6ba2?style=flat-plastic"/>
 </p>
 
-### Version v2.3 | Stable
+### Version Unstable
 To open the launcher, run ```python3 launcher.py``` in your terminal!  
 
 To Mod stuff, check out [modloader](https://github.com/reversee-dev/srpg-modloader), and [modrepo](https://github.com/reversee-dev/srpg-modrepo)!   
