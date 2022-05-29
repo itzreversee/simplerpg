@@ -1,4 +1,4 @@
-from ast import parse
+
 from lib.libsave import *
 from lib.libinput import *
 from lib.randomthings import *
@@ -75,13 +75,17 @@ def scanGameScenarios(): # scan game scenarios
 
 def parseGameScenario(scenario): # parse game scenario
     import json # import json 
-    j = open("scenarios/"+scenario[:len(scenario) -4]+"/"+scenario) # open scenario
+    c = 4
+    if whatOS() == "unix": c = 5
+    j = open("scenarios/"+scenario[:len(scenario) - c]+"/"+scenario) # open scenario
     data = json.load(j) # load json
     return data # return data
 
 def loadGameScenario(scenario): # load game scenario
+    c = 4
+    if whatOS() == "unix": c = 5
     if game.debugPrints: print("\nLoading scenario: "+scenario) # print debug info if specified in lib/randomthings.py
-    sys.path.insert(1, 'scenarios/'+scenario[:len(scenario) - 4]+'/') # inster path of scenario to sys.path
+    sys.path.insert(1, 'scenarios/'+scenario[:len(scenario) - c]+'/') # inster path of scenario to sys.path
     from scenario import a # import scenario as if it was in same folder, because specified in sys.path
     a.game() # run scenario - class "a" function "game"
 
