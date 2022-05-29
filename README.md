@@ -38,7 +38,7 @@ If you wish to enable it earlier, here are the instructions:
 Also when you just enable ```enforceModules``` without changing anything else, it will install and import ```climage```, which will display srpg logo inside launcher! I bet you didn't notice when you were reading source code for some reason ( good luck on that btw ).
 
 ### Versions
- * Launcher Update ( v2.3a ) - May 29, 2022 **- > [download]() (latest)**
+ * Launcher Update ( v2.3a ) - May 29, 2022 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/2.3a-stable) (latest)**
  * Ai & World Update ( v2.2a ) - January 6, 2022 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/2.2a-stable)**
  * Quick Fixes ( v2.1a ) - January 5, 2022 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/2.1a-stable)**
  * Village Core ( v2a ) - December 14, 2021 **- > [download](https://github.com/reversee-dev/simplerpg/releases/tag/2a-stable)**
