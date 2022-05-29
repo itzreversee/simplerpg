@@ -123,7 +123,9 @@ while True: # menu loop
     
     for i in range(len(spp)): # iterate through scenarios
         name = parseGameScenario(spp[i])['name'] # get scenario name
+        description = parseGameScenario(spp[i])['description']
         print(f"  {i+1}. {name}") # print scenario name
+        print(f"\t{description}") # print scenario name
     if enablePages: # IF ENABLED PAGES
         print(f"\nPage {page_id+1}/{page_ids+1}") # print page info
         print("Use w/e to change pages.") # print page info
