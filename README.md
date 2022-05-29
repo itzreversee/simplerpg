@@ -13,7 +13,7 @@
 To open the launcher, run ```python3 launcher.py``` in your terminal!  
 
 To Mod stuff, check out [modloader](https://github.com/reversee-dev/srpg-modloader), and [modrepo](https://github.com/reversee-dev/srpg-modrepo)!  
-You can also create your own mods! ~~The wiki will soon be updated!~~ wiki will not be updated anymore. check out [this](https://reversee-dev.github.io/simplerpg/) (under construction)
+You can also create your own mods! ~~The wiki will soon be updated!~~ wiki will not be updated anymore. check out ~~[this](https://reversee-dev.github.io/simplerpg/) (under construction)~~ nah this not good, probably will come back to wiki
 
 ### Quick Instruction
  * q, w, e - action 1, 2 ,3 
