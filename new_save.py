@@ -8,7 +8,7 @@ import time, sys
 
 clearConsole()
 
-print("simpleRPG. version: "+ game.version + game.isStable() +" (runtime : "+sys.argv[0]+" )") # remember
+print("simpleRPG. version: "+ game.version + game.isStable() +" (runtime : "+sys.argv[0]+")") # remember
 time.sleep(1.5)
 
 maciek = baseEntity(
