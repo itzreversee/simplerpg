@@ -18,28 +18,7 @@ if game.debugPrints: print("\nLoading default save file: \"s0.pkl\"")
 player = smanager.load("s0.pkl") # load player save data to local variable
 
 if game.enforceModules == True: # if game modules are enforced in lib/randomthings.py
-    import importlib.util # import module importlib.uil
-    modules = ['climage'] # modules required 
-    nomod = False 
-
-    for m in modules:   # iterate through modules
-        if (importlib.util.find_spec(m) == None): # if module not found
-            nomod = True # set nomod to true
-
-    if nomod: # if nomod is true
-        print("Hey! In order to play srpg, you need these modules!")
-        for m in modules: # iterate through modules
-            print(" - "+m)
-        print("Do you want to install it now? (q/*)")
-        a = getUserInput(); # get user input
-        if a == 0: 
-            for m in modules: # iterate through modules
-                install(m) # install module m
-            print("\nDone! Restart the game!")
-            exit();
-        else: 
-            print("See ya!")
-            input(); exit()
+    install_action(game.enforcedModulesList)
 
 def settings(): # settings menu
     while True:
