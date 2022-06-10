@@ -1,16 +1,19 @@
+
+from lib.console import *
+
 import time
 import os
 
 def notImplemented(f = ''):
-    if (f) == '': print("not implemented")
-    else: print(f + ' is not implemented')
+    if (f) == '': out('not implemented yet', color_='red', decoration_='bold')
+    else: print(f + ' is not implemented', color_='red', decoration_='bold')
     time.sleep(1)
 
     return()
 
 def install(pkg):
     import sys, subprocess
-    print(f" Installing - {pkg}")
+    out(f" Installing - {pkg}", color_='green', decoration_='bold')
     subprocess.check_call([sys.executable, "-m", "pip", "install", pkg]); time.sleep(0.1);
 
 def install_action(modules, norestart = False):
@@ -18,7 +21,7 @@ def install_action(modules, norestart = False):
     from lib.libinput import getUserInput
     import sys
     if modules == []:
-        print("\nNo modules specified")
+        out("\nNo modules specified", color_='red', decoration_='bold')
         return
     nomod = False 
 
@@ -27,19 +30,18 @@ def install_action(modules, norestart = False):
             nomod = True # set nomod to true
 
     if nomod: # if nomod is true
-        print("Hey! In order to play srpg, you need these modules!")
-        for m in modules: # iterate through modules
-            print(" - "+m)
-        print("Do you want to install it now? (q/*)")
+        out("Hey! In order to play srpg, you need these modules!", color_='green')
+        list(modules, color_='green')
+        out("Do you want to install it now? (q/*)", color_='green')
         a = getUserInput(); # get user input
         if a == 0: 
             for m in modules: # iterate through modules
                 install(m) # install module m
             if not norestart:
-                print("Restart")
+                out("Restart", decoration_='bold')
                 exit()
         else: 
-            print("See ya!")
+            out("See ya!")
             input(); exit()
 
 def clearConsole():

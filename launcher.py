@@ -1,12 +1,13 @@
 
 from lib.libsave import *
-from lib.libinput import *
+from lib.libinput import getch
 from lib.randomthings import *
-import time, sys, os
+from lib.console import *
+import time, sys, os, json
 
 clearConsole()
 
-print("simpleRPG. version: "+ game.version + game.isStable() +" (runtime : " + sys.argv[0] + ")")
+out(f"simpleRPG. version: "+ game.version + game.isStable() +"(runtime : " + sys.argv[0] + ")")
 time.sleep(1.5)
 
 # create default save file if not found
@@ -22,23 +23,30 @@ if game.enforceModules == True: # if game modules are enforced in lib/randomthin
 
 def settings(): # settings menu
     while True:
-        print("\nSettings:")
-        print(" - 1 - Delete save file")
-        print(" - 2 - Launch test room")
-        print(" - q - Exit")
+        out("\nSettings:")
+        out(" - 1 - Delete save file", 'green')
+        out(" - q - Restart", 'green')
         a = getch()
-        if a == "q": break;
+        if a == "q": exit();
         if a == "1":
             os.remove('s0_seed.pkl')
             os.remove('s0_sstock.pkl')
             os.remove('s0.pkl')
-            print("\nSave file deleted!")
+            out("\nSave file deleted!", "red")
             exit()
-        if a == "2": # ???
-            from lib.worldcore import fate
-            fate.helimantainosifarikanounpata()
-        if a == "f" and os.path.exists("fate"):
-            print("decide about your own life")
+
+def mega_reload():
+    import sys
+    import lib.console; import lib.libbattle; import lib.libdraw; import lib.libentity; import lib.libinput; import lib.libmagic; import lib.libsave; import lib.randomthings; import lib.worldcore
+    del sys.modules['lib.console']; del sys.modules['lib.libbattle']; del sys.modules['lib.libdraw']
+    del sys.modules['lib.libentity']; del sys.modules['lib.libinput']; del sys.modules['lib.libmagic']
+    del sys.modules['lib.libsave']; del sys.modules['lib.randomthings']; del sys.modules['lib.worldcore']
+    # import all the essential libraries
+    from lib.console import out, list
+    from lib.libinput import getch
+    from lib.libsave import smanager
+    from lib.randomthings import install_action, whatOS, clearConsole, whatOS, game
+    return True
 
 def scanGameScenarios(): # scan game scenarios
     scenarios = [] 
@@ -63,10 +71,11 @@ def parseGameScenario(scenario): # parse game scenario
 def loadGameScenario(scenario): # load game scenario
     c = 4
     if whatOS() == "unix": c = 5
-    if game.debugPrints: print("\nLoading scenario: "+scenario) # print debug info if specified in lib/randomthings.py
+    if game.debugPrints: out("\nLoading scenario: "+scenario, 'green') # print debug info if specified in lib/randomthings.py
     sys.path.insert(1, 'scenarios/'+scenario[:len(scenario) - c]+'/') # inster path of scenario to sys.path
     from scenario import a # import scenario as if it was in same folder, because specified in sys.path
-    a.game() # run scenario - class "a" function "game"
+    status = a.game() # run scenario - class "a" function "game"
+    return status
 
 class pager: # pager class
     def getPage(scenarios, page): # get page
@@ -78,7 +87,6 @@ class pager: # pager class
         else: # if page is not 1
             spp = scenarios[(page-1)*9:page*9] # get page scenarios
         return spp # return page
-
 
 # pages variable
 enablePages = None # disable pages
@@ -95,19 +103,21 @@ while True: # menu loop
         # get total pages
         page_ids = len(scenarios) // 9 # get total pages
 
-    print("\nPress i for settings") # print settings tip
+    out("\nPress i for settings", 'white') # print settings tip
     
     spp = pager.getPage(scenarios, page_id)  # get page of scenarios
-    print("Scenarios:")
+    out("Scenarios:\n", 'white')
     
     for i in range(len(spp)): # iterate through scenarios
         name = parseGameScenario(spp[i])['name'] # get scenario name
-        description = parseGameScenario(spp[i])['description']
-        print(f"  {i+1}. {name}") # print scenario name
-        print(f"\t{description}") # print scenario name
+        description = parseGameScenario(spp[i])['description'] # get scenario description
+        name_color = parseGameScenario(spp[i])['name_color'] # get scenario name color
+        description_color = parseGameScenario(spp[i])['description_color'] # get scenario description color
+        out(f"  {i+1}. {name}", name_color) # print scenario name
+        out(f"\t{description}", description_color) # print scenario name
     if enablePages: # IF ENABLED PAGES
-        print(f"\nPage {page_id+1}/{page_ids+1}") # print page info
-        print("Use w/e to change pages.") # print page info
+        out(f"\nPage {page_id+1}/{page_ids+1}") # print page info
+        out("Use w/e to change pages.", 'green') # print page info
 
     (menuinput) = getch() # getch, so dynamic type
     if (menuinput) == 4: continue # if enter is pressed, continue
@@ -128,7 +138,7 @@ while True: # menu loop
 
     if menuinput > maxPick or menuinput < 1: continue # if menuinput is not in range, continue
     else: # if menuinput is in range
-        loadGameScenario(spp[menuinput-1]) # load scenario
-        input() # wait for enter if scenario does not exit already
+        status = loadGameScenario(spp[menuinput-1]) # load scenario
+        input('Scenario exited: ' + str(status)) # wait for enter if scenario does not exit already
 
 

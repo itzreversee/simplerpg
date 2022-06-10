@@ -2,6 +2,7 @@ from lib.libentity import checkStats
 from lib.libdraw import *
 from lib.libinput import *
 from lib.randomthings import clearConsole, notImplemented
+from lib.console import out
 from assets.items import *
 
 from lib.libsave import *
@@ -39,7 +40,7 @@ def smallVillage(p):
         (menuinput) = getUserInput()
         if (menuinput) == 0: shop(p)
         if (menuinput) == 1: sleep(p) 
-        if (menuinput) == 2: print("you have exited the village."); time.sleep(2); exit()
+        if (menuinput) == 2: out("you have exited the village."); time.sleep(2); exit()
     cmenu = 'village';  
 
 def sleep(p):
@@ -68,42 +69,42 @@ def sleep(p):
         else: break;
 
 def innEvent(p, type):
-    if (p.hp >= p.maxhp) and (p.mana >= p.maxmana): print("\nYou are already at max stats!"); getch(); return;
+    if (p.hp >= p.maxhp) and (p.mana >= p.maxmana): out("\nYou are already at max stats!"); getch(); return;
 
     if type == 0: # NORMAL SLEEP ( FOR SMALL VILLAGE ) ( 20 GOLD )
-        if (p.gold < 20): print("\nYou don't have enough gold!"); return;
-        print("\nYou took a nap!")
-        print(" +3EXP")
-        print(" +MAX HP")
-        print(" +MAX MANA")
+        if (p.gold < 20): out("\nYou don't have enough gold!"); return;
+        out("\nYou took a nap!")
+        out(" +3EXP")
+        out(" +MAX HP")
+        out(" +MAX MANA")
         p.gold -= 20; p.exp += 3; p.hp = p.maxhp; p.mana = p.maxmana;
 
     if type == 1: # PREMIUM SLEEP ( 50 GOLD )
-        if (p.gold < 50): print("\nYou don't have enough gold!"); return;
-        print("\nYou spent night in this inn!")
-        print(" +5EXP")
-        print(" +MAX HP  +20 temporary")
-        print(" +MAX MANA")
+        if (p.gold < 50): out("\nYou don't have enough gold!"); return;
+        out("\nYou spent night in this inn!")
+        out(" +5EXP")
+        out(" +MAX HP  +20 temporary")
+        out(" +MAX MANA")
         p.gold -= 50; p.exp += 5; p.hp = p.maxhp + 20; p.mana = p.maxmana;
 
     if type == 3: # PREMIUM SLEEP + NORMAL BREAKFAST ( 75 GOLD )
-        if (p.gold < 75): print("\nYou don't have enough gold!"); return;
-        print("\nYou spent night in this inn, with breakfast!")
-        print(" +10EXP")
-        print(" +MAX HP  +20 temporary")
-        print(" +MAX MANA  +30 temporary")
+        if (p.gold < 75): out("\nYou don't have enough gold!"); return;
+        out("\nYou spent night in this inn, with breakfast!")
+        out(" +10EXP")
+        out(" +MAX HP  +20 temporary")
+        out(" +MAX MANA  +30 temporary")
         p.gold -= 75; p.exp += 10; p.hp = p.maxhp + 20; p.mana = p.maxmana + 30;
     
     if type == 4: # NORMAL BREAKFAST ( 35 GOLD )
-        if (p.gold) < 35: print("\nYou don't have enough gold!"); return;
-        print("\nYou have eaten breakfast!")
-        print(" +5EXP")
-        print(" +MAX HP")
-        print(" +MAX MANA  +30 temporary")
+        if (p.gold) < 35: out("\nYou don't have enough gold!"); return;
+        out("\nYou have eaten breakfast!")
+        out(" +5EXP")
+        out(" +MAX HP")
+        out(" +MAX MANA  +30 temporary")
         p.gold -= 35; p.exp += 5; p.hp = p.maxhp; p.mana = p.maxmana + 30;
 
     # WAIT FOR PLAYER
-    print("\nPress any key to continue...");  time.sleep(0.75); getch()  
+    out("\nPress any key to continue...");  time.sleep(0.75); getch()  
 
     global ssave; reload(ssave, p) # reload
     global seed; seed += 200 # FOR EVERY SLEEP CHANGE SEED!
@@ -130,18 +131,18 @@ def shop(p): # SHOP DISPLAY FUNCTION
         cmenu = 'shop';  
 
 def buy(p, item): # BUY MENU
-    print("\nYou are about to buy: "+item.inGameName)
-    print("\n Price: "+str(item.cost))
+    out("\nYou are about to buy: "+item.inGameName)
+    out("\n Price: "+str(item.cost))
     itemstats = getItemInfo(item); printItemInfo(itemstats)
     (menuinput) = getUserInput()
     if (menuinput) == 0:
-        if len(p.items) >= p.maxitems: print("You can't buy more than " + str(p.maxitems) + " items"); time.sleep(3); return;
-        if (item.cost > p.gold): print("You don't have enough gold"); time.sleep(3); return;
+        if len(p.items) >= p.maxitems: out("You can't buy more than " + str(p.maxitems) + " items"); time.sleep(3); return;
+        if (item.cost > p.gold): out("You don't have enough gold"); time.sleep(3); return;
         p.gold -= item.cost; p.items.append(item);
-        print("You bought " + item.inGameName + "!"); reload(ssave, p); 
+        out("You bought " + item.inGameName + "!"); reload(ssave, p); 
     
     # WAIT FOR PLAYER
-    print("\nPress any key to continue...");  time.sleep(0.75); getch()  
+    out("\nPress any key to continue...");  time.sleep(0.75); getch()  
 
 
 def getShopStock(count, force = False): # GET SHOP STOCK
@@ -158,18 +159,3 @@ def getShopStock(count, force = False): # GET SHOP STOCK
             shopstock.append(itempool[random.randint(0,len(itempool) -1)])
     worldReload()
     return(shopstock)
-
-class fate:
-    def helimantainosifarikanounpata():
-        import os, time
-        print("fate deleted :D")
-        time.sleep(1)
-        print('Traceback (most recent call last):')
-        time.sleep(0.5)
-        for _ in range(50):
-            time.sleep(0.05)
-            print(' File '+ os.path.abspath(__file__) + ', line '+ str(666) + ', in <module>',)
-        print("fate decided :DDDDD")
-        from pathlib import Path
-        Path('fate').touch()
-        exit()

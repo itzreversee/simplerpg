@@ -1,6 +1,6 @@
 from lib.libmagic import * 
 from assets.items import *
-
+from lib.console import out
 import pickle, time
 
 def checkStats(p):
@@ -22,7 +22,7 @@ def checkStats(p):
         p.level += 1;
         p.exp = p.exp - p.nextlevel;
         p.nextlevel *= 2
-        print(" LEVEL UP! | LEVEL " + str(p.level) + ", UNTIL NEXT LEVEL: " + str(p.nextlevel - p.exp) + "EXP ")
+        out(" LEVEL UP! | LEVEL " + str(p.level) + ", UNTIL NEXT LEVEL: " + str(p.nextlevel - p.exp) + "EXP ", 'purple')
         time.sleep(2)
     a = p; return a;
 
