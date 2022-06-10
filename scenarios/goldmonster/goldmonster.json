@@ -1,4 +1,8 @@
 {
     "name": "Gold Monster Battle (built-in)",
-    "description": "Battle with gold monster"
+    "description": "Battle with gold monster",
+
+    "name_color": "yellow",
+    "description_color": "yellow"
+
 }
