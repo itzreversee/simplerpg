@@ -7,9 +7,6 @@ import time, sys, os, json
 
 clearConsole()
 
-out(f"simpleRPG. version: "+ game.version + game.isStable() +"(runtime : " + sys.argv[0] + ")")
-time.sleep(1.5)
-
 # create default save file if not found
 if not (os.path.isfile("s0.pkl")) or not os.path.isfile("s0_seed.pkl") or not os.path.isfile("s0_sstock.pkl"):
     from new_save import createDefaultSaveFile
@@ -302,8 +299,9 @@ page_ids = 0 # page ids
 
 while True: # menu loop
     clearConsole() # clear console
+    out(f"simpleRPG. version: "+ game.version + game.isStable())
     if "climage" in sys.modules: print(climage.convert('assets/srpgmini.png', is_unicode=True))  # logo  if module climage is installed
-
+    
     scenarios = scanGameScenarios() # scan scenarios
     if len(scenarios) > 9: # if more than 9 scenarios
         enablePages = True # enable pages
@@ -315,7 +313,7 @@ while True: # menu loop
         out("Press u to update", 'green') # print settings tip
     
     spp = pager.getPage(scenarios, page_id)  # get page of scenarios
-    out("Scenarios:\n", 'white')
+    out("\nScenarios:\n", 'white')
     
     for i in range(len(spp)): # iterate through scenarios
         name = parseGameScenario(spp[i])['name'] # get scenario name
