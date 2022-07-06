@@ -24,11 +24,36 @@ if game.enforceModules == True: # if game modules are enforced in lib/randomthin
 def settings(): # settings menu
     while True:
         out("\nSettings:")
-        out(" - 1 - Delete save file", 'green')
+        out(" - 1 - Update", 'green')
+        out(" - 2 - Delete save file", 'green')
         out(" - q - Restart", 'green')
         a = getch()
         if a == "q": exit();
         if a == "1":
+            pkg_url, nver, status = ota.check()
+            if status == 'newest': out(' Already running newest version! Let\'s play! ')
+            if status == 'available': out(' A newer version is available (' + nver + ')')
+            if status == 'ahead': out(' Woah! You are ahead of time! newest version is ' + nver + ', but you have a newer one!')
+            if status == 'unstable': out(' You are riding at the edge! Stay safe!')
+            sb = 'Do you'; 
+            if not status == 'available': sb += ' still'
+            sb += ' want to update? (y/n)'
+            out(sb)
+            
+            uinp = getch()
+            if not uinp.lower() == 'y': continue
+            pkg_loc = ota.download(pkg_url, nver)
+            ota.apply(pkg_loc)
+            
+            out('You may need to relaunch to avoid any problems!')
+            out('trying mega_reload', 'red')
+            try:
+                mega_reload()
+            except Exception as e:
+                out('MEGA RELOAD EROR: ' + str(e))
+                exit()
+                
+        if a == "2":
             os.remove('s0_seed.pkl')
             os.remove('s0_sstock.pkl')
             os.remove('s0.pkl')
@@ -87,6 +112,186 @@ class pager: # pager class
         else: # if page is not 1
             spp = scenarios[(page-1)*9:page*9] # get page scenarios
         return spp # return page
+
+class ota:
+    logfile: str
+    def mklog(): 
+        import datetime
+        now = datetime.datetime.now()
+        string_builder = now.strftime('%d-%m-%Y_%H-%M-%S')
+        string_builder += '-ota.log'
+        with open(string_builder, 'w') as f:
+            f.write('START OTA LOG on '+now.strftime('%H-%M-%S'))
+        ota.logfile = string_builder
+    def log(s):
+        import datetime
+        now = datetime.datetime.now()
+        string_builder = now.strftime('%H-%M-%S')
+        string_builder += ' > '
+        string_builder += str(s)
+        with open(ota.logfile, 'a') as f:
+            f.write('\n'+string_builder)
+    def check():
+        ota.log('checking newest version')
+        import requests
+        version_url = 'https://raw.githubusercontent.com/reversee-dev/simplerpg/stable/ota_version'
+        
+        newest_version = requests.get(version_url).content.decode().replace('\n',''); 
+        compare_ver = float(newest_version[:-1])
+        #                   https://github.com/reversee-dev/simplerpg/releases/download/2.2a-stable/srpg.meta
+        package_url_base = 'https://github.com/reversee-dev/simplerpg/releases/download/'
+        package_url = package_url_base + newest_version + '-stable/update.ota'
+        
+        if compare_ver == float(game.version):
+            ota.log('status: newest')
+            status = 'newest'
+        elif compare_ver > float(game.version):
+            ota.log('status: available')
+            status = 'available'
+        elif compare_ver < float(game.version):
+            if game.stable == True:
+                ota.log('status: ahead')
+                status = 'ahead'
+            if game.stable == False:
+                ota.log('status: unstable')
+                status = 'unstable'
+        else:
+            print(status)
+            exit()
+            status = 'unknown'
+                
+        return package_url, newest_version, status
+    def download(url, ver):
+        import requests
+        local_filename = 'package_' + ver + '.ota'
+        with requests.get(url, stream=True) as r:
+            r.raise_for_status()
+            with open(local_filename, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=512): 
+                    f.write(chunk)
+        return local_filename
+    def apply(pkg, force=False):  
+        ota.log('start applying from package: ' + str(pkg))
+        from hashlib import sha256
+        import shutil
+        import re
+        
+        try: os.remove('ota_temp/*') 
+        except: pass
+        if not os.path.exists(os.curdir + '/ota_temp'):
+            ota.log('ota temp not found, creating...')
+            os.makedirs(os.curdir + '/ota_temp')
+        if not os.path.exists(os.curdir + '/ota_backup'):
+            ota.log('ota backup not found, creating...')
+            os.makedirs(os.curdir + '/ota_backup')
+        
+        # unzip ota
+        import zipfile
+        with zipfile.ZipFile(pkg, 'r') as zip:
+            zip.extractall(os.path.join(os.curdir + '/ota_temp'))
+        
+        ota.log('checking version...')
+        try: 
+            import ota_temp.lib.randomthings as ip
+            ipv = ip.game.version
+        except ImportError:
+            ipv = 'Unknown'
+        out("Current version: " +str(game.version), 'green')
+        out("New version: " + ipv, 'yellow')
+        if force:
+            out(' Do you want to continue? (y/n) ')
+            inp = getch()
+            if not inp.lower() == 'y': return False
+        
+        current_file_hashes = {}
+        new_file_hashes = {}
+        new_files = []
+        existing_files = []
+        exclude = ['.git', '.github', '__pycache__']
+        
+          # check for new files
+        ota.log('checking for existing files')
+        for subdir, dirs, files in os.walk(os.curdir + '/ota_temp'):
+            dirs[:] = [d for d in dirs if d not in exclude]
+            for file in files:
+                new = os.path.join(os.curdir, subdir, file)
+                old = '.' + new[12:]
+                nold = re.sub(r'simplerpg.*-stable', '', old)
+                if os.path.exists(nold):
+                    existing_files.append(new)
+                    ota.log('file ' + file + ' already exists, adding to list of existing files')
+                else:
+                    new_files.append(new)
+                    ota.log('file ' + file + ' does not exist, adding to list of new files')
+        # check what files were changed -> [list]
+            # installed
+        ota.log('processing hashes from current installation,\n\treading every 512 bytes')
+        for subdir, dirs, files in os.walk(os.curdir):
+            for file in files:
+                hsh = sha256()
+                full_file_path = os.path.join(subdir, file) 
+                with open(full_file_path, 'rb') as f:
+                    for byte_block in iter(lambda: f.read(512), b""):
+                        hsh.update(byte_block)
+                hsh_ = hsh.hexdigest()         
+                ota.log('File: ' + full_file_path + ' -> ' + str(hsh_))
+                current_file_hashes[full_file_path] = hsh_
+             
+             # new
+        ota.log('processing hashes from update package,\n\treading every 512 bytes')
+        for subdir, dirs, files in os.walk(os.curdir + '/ota_temp'):
+            for file in files:
+                hsh = sha256()
+                full_file_path = os.path.join(subdir, file) 
+                with open(full_file_path, 'rb') as f:
+                    for byte_block in iter(lambda: f.read(512), b""):
+                        hsh.update(byte_block)
+                hsh_ = hsh.hexdigest()         
+                ota.log('File: ' + full_file_path + ' -> ' + str(hsh_))
+                new_file_hashes[full_file_path] = hsh_
+        
+        
+        # this ./ota_temp\simplerpg-2.3a-stable\launcher.py
+        # to   ./ota_temp\launcher.py
+        # find 'simplerpg-2.3a-stable
+        # rm   [:-1]
+        
+        for file in new_files:
+            nfile = file[13:]
+            ota.log('Moving NEW file - ' + nfile)
+            try: shutil.move(file, nfile)    
+            except: out('Failed to move file ' + nfile)
+            
+        for file in existing_files:
+            nfile = file[13:]
+            file_c = '.\\' + nfile
+            file_n = './ota_temp\\' + nfile
+            # backup
+            ota.log('Backing up ' + nfile)
+            shutil.copy(nfile, 'ota_backup/')
+            try:
+                if new_file_hashes[file_n] == current_file_hashes[file_c]:
+                    ota.log('File: ' + nfile + ' is already at its newest version')
+                else:
+                    ota.log('Moving NEW file - ' + file + ' -> ' + nfile)
+                    try: shutil.move(file, nfile)
+                    except: out('Failed to move file ' + nfile)
+            except KeyError:
+                continue
+        return
+        
+# check for ota
+out('Checking for updates...')
+ota.mklog()
+try: 
+    _, _, plosc = ota.check()
+    if plosc == 'available': out('New version is available! Update through settings!')
+    time.sleep(0.5)
+except Exception as e:
+    out('Exception: ' + str(e))
+    out('Mirror propably unreachable or invalid installed version')
+    time.sleep(1)
+time.sleep(0.5)
 
 # pages variable
 enablePages = None # disable pages
