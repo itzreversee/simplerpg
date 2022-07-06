@@ -26,33 +26,13 @@ def settings(): # settings menu
         out("\nSettings:")
         out(" - 1 - Update", 'green')
         out(" - 2 - Delete save file", 'green')
-        out(" - q - Restart", 'green')
+        out(" - q - Back", 'green')
+        out(" - r - Restart", 'green')
         a = getch()
-        if a == "q": exit();
+        if a == "q": return;
+        if a == "r": exit();
         if a == "1":
-            pkg_url, nver, status = ota.check()
-            if status == 'newest': out(' Already running newest version! Let\'s play! ')
-            if status == 'available': out(' A newer version is available (' + nver + ')')
-            if status == 'ahead': out(' Woah! You are ahead of time! newest version is ' + nver + ', but you have a newer one!')
-            if status == 'unstable': out(' You are riding at the edge! Stay safe!')
-            sb = 'Do you'; 
-            if not status == 'available': sb += ' still'
-            sb += ' want to update? (y/n)'
-            out(sb)
-            
-            uinp = getch()
-            if not uinp.lower() == 'y': continue
-            pkg_loc = ota.download(pkg_url, nver)
-            ota.apply(pkg_loc)
-            
-            out('You may need to relaunch to avoid any problems!')
-            out('trying mega_reload', 'red')
-            try:
-                mega_reload()
-            except Exception as e:
-                out('MEGA RELOAD EROR: ' + str(e))
-                exit()
-                
+            ota.update_interface()
         if a == "2":
             os.remove('s0_seed.pkl')
             os.remove('s0_sstock.pkl')
@@ -115,6 +95,7 @@ class pager: # pager class
 
 class ota:
     logfile: str
+    plosc = 'nochk'
     def mklog(): 
         import datetime
         now = datetime.datetime.now()
@@ -131,6 +112,28 @@ class ota:
         string_builder += str(s)
         with open(ota.logfile, 'a') as f:
             f.write('\n'+string_builder)
+    def update_interface():
+        pkg_url, nver, status = ota.check()
+        if status == 'newest': out(' Already running newest version! Let\'s play! ')
+        if status == 'available': out(' A newer version is available (' + nver + ')')
+        if status == 'ahead': out(' Woah! You are ahead of time! newest version is ' + nver + ', but you have a newer one!')
+        if status == 'unstable': out(' You are riding at the edge! Stay safe!')
+        sb = 'Do you'; 
+        if not status == 'available': sb += ' still'
+        sb += ' want to update? (y/n)'
+        out(sb)
+            
+        uinp = getch()
+        if not uinp.lower() == 'y': return
+        pkg_loc = ota.download(pkg_url, nver)
+        ota.apply(pkg_loc)
+            
+        out('You may need to relaunch to avoid any problems!')
+        out('trying mega_reload', 'red')
+        try:
+            mega_reload()
+        except Exception as e:
+            out('MEGA RELOAD EROR: ' + str(e))
     def check():
         ota.log('checking newest version')
         import requests
@@ -284,8 +287,8 @@ class ota:
 out('Checking for updates...')
 ota.mklog()
 try: 
-    _, _, plosc = ota.check()
-    if plosc == 'available': out('New version is available! Update through settings!')
+    _, _, ota.plosc = ota.check()
+    if ota.plosc == 'available': out('New version is available! Update through settings!')
     time.sleep(0.5)
 except Exception as e:
     out('Exception: ' + str(e))
@@ -309,6 +312,8 @@ while True: # menu loop
         page_ids = len(scenarios) // 9 # get total pages
 
     out("\nPress i for settings", 'white') # print settings tip
+    if ota.plosc == 'available':
+        out("\nPress u to update", 'green') # print settings tip
     
     spp = pager.getPage(scenarios, page_id)  # get page of scenarios
     out("Scenarios:\n", 'white')
@@ -328,6 +333,7 @@ while True: # menu loop
     if (menuinput) == 4: continue # if enter is pressed, continue
     if (menuinput) == 'q': break # if q is pressed, break loop
     if (menuinput) == 'i': settings() # if i is pressed, settings menu
+    if (menuinput) == 'u' and ota.plosc == 'available': ota.update_interface() # if i is pressed, settings menu
     if enablePages: # IF ENABLED PAGES
         if (menuinput) == 'w':  # if w is pressed
                 if not page_ids > page_id:  # if page id is not greater than total pages
