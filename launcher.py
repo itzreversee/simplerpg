@@ -288,13 +288,12 @@ out('Checking for updates...')
 ota.mklog()
 try: 
     _, _, ota.plosc = ota.check()
-    if ota.plosc == 'available': out('New version is available! Update through settings!')
-    time.sleep(0.5)
+    if ota.plosc == 'available': out('New version is available!')
+    time.sleep(2)
 except Exception as e:
     out('Exception: ' + str(e))
     out('Mirror propably unreachable or invalid installed version')
-    time.sleep(1)
-time.sleep(0.5)
+    time.sleep(1.5)
 
 # pages variable
 enablePages = None # disable pages
@@ -313,7 +312,7 @@ while True: # menu loop
 
     out("\nPress i for settings", 'white') # print settings tip
     if ota.plosc == 'available':
-        out("\nPress u to update", 'green') # print settings tip
+        out("Press u to update", 'green') # print settings tip
     
     spp = pager.getPage(scenarios, page_id)  # get page of scenarios
     out("Scenarios:\n", 'white')
