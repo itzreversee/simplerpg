@@ -1,4 +1,7 @@
 {
     "name": "Stone Monster Battle (built-in)",
-    "description": "Battle with stone monster "
+    "description": "Battle with stone monster ",
+
+    "name_color": "black",
+    "description_color": "white"
 }

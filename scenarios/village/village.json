@@ -1,4 +1,7 @@
 {
     "name": "Village (built-in)",
-    "description": "Enter village"
+    "description": "Enter village",
+
+    "name_color": "green",
+    "description_color": "green"
 }

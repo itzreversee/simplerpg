@@ -4,13 +4,6 @@ from lib.libsave import *
 from lib.libentity import *
 from lib.randomthings import *
 
-import time, sys
-
-clearConsole()
-
-print("simpleRPG. version: "+ game.version + game.isStable() +" (runtime : "+sys.argv[0]+" )") # remember
-time.sleep(1.5)
-
 maciek = baseEntity(
     'Maciek', 0, # name, location
     100, 100, 100, 1, 1, # hp, maxhp, basemaxhp, basehpregen, hpregen

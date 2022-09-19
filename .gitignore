@@ -4,3 +4,11 @@ pip-log.txt
 
 enemylogic/__pycache__/
 lib/__pycache__/
+
+*.log
+*.pkl
+*.ota
+*.arc
+
+ota_temp/
+ota_backup/

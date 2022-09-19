@@ -72,10 +72,9 @@ def getEnemyRound(p, e):
         castspell(e, p, e.inventory[a])
 
 def castspell(player, enemy, spell): 
-    print('\n')
-
+    out('')
     if (spell.cost) > player.mana: 
-        if (player.isEnemy) == False: print(" You don't have enough mana!"); 
+        if (player.isEnemy) == False: out(" You don't have enough mana!", 'red'); 
         return('battle');
 
     else:
@@ -84,25 +83,17 @@ def castspell(player, enemy, spell):
             enemy.hp = round(enemy.hp - spell.value, 2) 
             player.mana = player.mana - spell.cost
 
-            print(" " + player.name + " casted " + spell.name + "!")
-            time.sleep(1)
-
-        if (spell.type) == 'curse':
+        elif (spell.type) == 'curse':
             enemy.hp = round(enemy.hp - (spell.value - 5) ,2) 
             enemy.curseLeft = spell.duration
             player.mana = player.mana - spell.cost
-            
 
-            print(" " + player.name + " casted " + spell.name + "!")
-            time.sleep(1)
-
-
-        if (spell.type) == 'heal':
+        elif (spell.type) == 'heal':
             player.hp = player.hp + spell.value
             player.mana = player.mana - spell.cost
 
-            print(" " + player.name + " used " + spell.name + "!")
-            time.sleep(1)
+        out(" " + player.name + " used " + spell.name + "!", 'blue')
+        time.sleep(1)
 
         return('battle');
 
@@ -123,12 +114,12 @@ def flee(p, rounds):
     if not rounds >= 20:
          chance = random.randint(0, (35 - rounds))
     else: chance = random.randint(0, 10)
-    print("\n " + p.name+ " is trying to flee!")
+    out("\n " + p.name+ " is trying to flee!", 'yellow')
     if (chance) == 0:
         time.sleep(3)
-        print(" ... ")
+        out(" ... ")
         time.sleep(1)
-        print(" " + p.name + " fleed!")
+        out(" " + p.name + " fleed!", 'green')
         if p.isEnemy == True:
             return 3;
         else: return 1;
