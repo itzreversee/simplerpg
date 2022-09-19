@@ -60,7 +60,7 @@ class game():
     stable = True
     debugPrints = False
     enforceModules = True
-    enforcedModulesList = ['climage']
+    enforcedModulesList = ['requests']
 
     def isStable():
         if (game.stable) == False: return('-unstable')
